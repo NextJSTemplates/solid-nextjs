@@ -1,7 +1,6 @@
 import { getAllPosts } from "@/app/libs/markdown";
 import SidebarLink from "@/components/Docs/SidebarLink";
 
-
 export default function DocsPage() {
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
   return (
@@ -14,9 +13,7 @@ export default function DocsPage() {
             <div className="w-full px-4 lg:w-1/4">
               <div className="sticky top-[74px] p-4 border border-white shadow-solid-4 rounded-lg  transition-all  dark:border-strokedark dark:bg-blacksection">
                 <ul className="space-y-2">
-                  {posts.map((post, key) => (
-                    <SidebarLink post={post} key={key}/>
-                  ))}
+                  <SidebarLink />
                 </ul>
               </div>
             </div>
