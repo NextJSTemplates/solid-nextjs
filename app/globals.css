@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* third-party libraries CSS */
+
+.testimonial-01 .swiper-pagination-bullet {
+  @apply w-2.5 h-2.5 bg-stroke opacity-100;
+}
+.testimonial-01 .swiper-pagination-bullet-active {
+  @apply bg-primary w-5 rounded-full;
+}
+
+.testimonial-01 .swiper-pagination {
+  @apply relative pt-[50px];
+}
+
+
+#supportCheckbox:checked ~ div span {
+  @apply opacity-100;
+}
+
+@layer base {
+  body {
+    @apply font-inter font-normal text-regular text-waterloo relative dark:text-manatee z-1;
+  }
+}
+
+@layer components {
+  .dropdown {
+    @apply flex-col gap-4 min-w-max lg:w-[250px] mt-2 lg:mt-0 bg-white dark:bg-black border border-stroke dark:border-strokedark shadow-solid-13 ease-in duration-300 px-8 py-5 rounded-md -left-7.5 hidden
+    lg:translate-y-10 lg:opacity-0 lg:invisible lg:absolute lg:flex
+    lg:before:absolute lg:before:-top-1.5 lg:before:left-10 lg:before:w-3 lg:before:h-3 lg:before:border-l lg:before:border-t lg:before:border-stroke lg:dark:before:border-strokedark lg:before:bg-white lg:dark:before:bg-black lg:before:rotate-45 
+    lg:group-hover:translate-y-6.5 lg:group-hover:opacity-100 lg:group-hover:visible;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .img-white {
+    filter: invert(0%) sepia(96%) saturate(15%) hue-rotate(249deg)
+      brightness(100%) contrast(105%);
+  }
+}
+
+.blog-details-docs {
+  @apply border border-white shadow-solid-3 rounded-lg p-7.5 xl:p-12.5 transition-all  dark:hover:bg-hoverdark dark:border-strokedark dark:bg-blacksection;
+}
+
+.blog-details p {
+  @apply mb-8 text-base leading-relaxed text-titlebgdark dark:text-waterloo;
+}
+
+.blog-details p strong {
+  @apply text-primary dark:text-waterloo;
+}
+.blog-details h3 strong,
+.blog-details h3 {
+  @apply text-xl mb-10 !font-semibold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
+}
+
+.blog-details h4 strong,
+.blog-details h4 {
+  @apply text-xl !font-semibold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
+}
+
+.blog-details h5 strong,
+.blog-details h5 {
+  @apply text-lg mb-3 !font-semibold leading-tight text-black dark:text-white sm:text-xl;
+}
+
+.blog-details h1 {
+  @apply mb-4 text-3xl !font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] lg:text-4xl xl:text-[45px];
+}
+.blog-details h2 strong,
+.blog-details h2 {
+  @apply mb-4 text-[26px] !font-bold !leading-tight text-black dark:text-white sm:text-3xl md:text-4xl;
+}
+
+.blog-details ul,
+.blog-details ol {
+  @apply mb-10 list-inside list-disc text-titlebgdark;
+}
+
+.blog-details li,
+.blog-details li {
+  @apply mb-2 text-base text-titlebgdark dark:text-waterloo;
+}
+
+.blog-details blockquote {
+  @apply relative z-10 mb-10 overflow-hidden rounded-sm bg-manatee p-8 dark:bg-titlebgdark md:py-9 lg:px-10 text-center text-base font-medium italic text-black;
+}
+
+.blog-details blockquote::after {
+  content: "";
+  @apply absolute w-20 h-20 right-0 bottom-0 bg-[url(/images/blog/quote-shape-2.svg)] bg-no-repeat bg-contain bg-right-bottom;
+}
+
+.blog-details blockquote::before {
+  content: "";
+  @apply absolute left-0 top-0 w-[140px] h-[106px] bg-[url(/images/blog/quote-shape-1.svg)] dark:bg-[url(/images/blog/quote-shape-1.svg)] bg-no-repeat bg-contain bg-left-top;
+}
+
+pre {
+  @apply relative bg-strokedark px-4 py-2 rounded-lg mb-2;
+}
+.prism-copy-button {
+  @apply absolute top-2 right-2 h-[26px] rounded bg-white px-4 text-primary;
+} 
+
+
+.active-tab {
+  @apply text-black dark:text-white dark:bg-blackho bg-stroke
+}
