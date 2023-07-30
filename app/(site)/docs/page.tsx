@@ -1,8 +1,6 @@
-import { getAllPosts } from "@/app/libs/markdown";
 import SidebarLink from "@/components/Docs/SidebarLink";
 
 export default function DocsPage() {
-  const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
   return (
     <>
       <title>Docs - Startup</title>
