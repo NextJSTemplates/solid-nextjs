@@ -30,7 +30,7 @@ ___
 - No Functional Blogging System
 - External Pages without Functions/Integrations
 - Community Support
-- Free Lifetime Updates
+- Free Lifetime Future Updates
 ___
 
 ### [📦 Download](https://nextjstemplates.com/templates/solid)
