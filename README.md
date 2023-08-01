@@ -6,7 +6,7 @@ This Next.js template's homepage comes with an awesome hero area, logos of assoc
 
 **Solid Next.js template packed with all necessary external pages** - such as login, registration, blog grids, and single blog pages, among others. This broad collection of pages provides all the necessary tools to create a feature-packed, comprehensive, and visually appealing website or landing page for software, a web application, or SaaS.
 
-### [🔥 Get Solid Pro - Next.js SaaS Boilerplate and Starter Kit](https://nextjstemplates.com/templates/saas-starter-startup)
+### [🔥 Get Solid Pro - Next.js SaaS Boilerplate and Starter Kit](https://nextjstemplates.com/templates/solid)
 
 ![Startup Pro](https://uideck.com/wp-content/uploads/edd/2023/07/solid-saas.png)
 
