@@ -155,17 +155,17 @@ const Header = () => {
             <ThemeToggler />
 
             <Link
-              href="/auth/signin"
+              href="https://github.com/NextJSTemplates/solid-nextjs"
               className="text-waterloo text-regular font-medium hover:text-primary"
             >
-              Sign In
+            GitHub Repo 🌟
             </Link>
 
             <Link
-              href="/auth/signup"
+              href="https://nextjstemplates.com/templates/solid"
               className="flex items-center justify-center bg-primary hover:bg-primaryho ease-in-out duration-300 text-white text-regular rounded-full py-2.5 px-7.5"
             >
-              Sign Up
+              Get Pro 🔥
             </Link>
           </div>
         </div>
