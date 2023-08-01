@@ -1,22 +1,12 @@
-## Installation and Configuration
+# Solid - Free Next.js Web Template
 
-You must follow the documentation setp by step in this order to do a successful installation and configuration. 
+Solid is a free Next.js template specifically crafted for startups, SaaS, and software websites. It provides an extensive array of necessary sections, elements, and pages required to build a fully-equipped website for any SaaS, software, or startup site. Comes with all cutting edge React and Next.js features - **Built on Next.js 13, React 18 and TypeScript.**
 
-## [Complete Video Tutorial 🔗](https://www.youtube.com/embed/CsQOyXM6nWY) 
-A Complete Step-by-Step Video Tutorial for Installing Template, Configuring Your Blog with Sanity and MDX for Docs, Setting up Auth with NextAuth, Managing Databases, Enabling Stripe Payments for Subscription, and Everything you need to make up and running.
+This Next.js template's homepage comes with an awesome hero area, logos of associated brands, a features section, an about section, another features section with tabs, counters, and star ratings, integration options, clear call-to-actions, an FAQ section with accordions, a testimonials section, pricing tables, a contact page, a blog, and a distinctive footer.
 
----
+**Solid Next.js template packed with all necessary external pages** - such as login, registration, blog grids, and single blog pages, among others. This broad collection of pages provides all the necessary tools to create a feature-packed, comprehensive, and visually appealing website or landing page for software, a web application, or SaaS.
 
-## Steps
 
-Installing starter templates steps are different than ordinary templates, you have to follow the steps strictly without skipping any of them.
-
-1. [Installation](#installation)
-2. [Authentication and DB Setup](https://nextjstemplates.com/docs/authentication)
-3. [Database Setup - PostgreSQL on Vercel](https://nextjstemplates.com/docs/database#postgresql-on-vercel)
-4. [Sanity Integration](https://nextjstemplates.com/docs/sanity)
-5. [Markdown Integration](https://nextjstemplates.com/docs/markdown)
-6. [Stripe Integration](https://nextjstemplates.com/docs/stripe)
 
 ## Installation
 
