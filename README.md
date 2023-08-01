@@ -64,13 +64,6 @@ or
     yarn install
  ```
 
-or
-    
-```bash
-    yarn install
- ```
-
-
 
 You can start the project on the local server
     
