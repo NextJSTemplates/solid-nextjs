@@ -32,23 +32,9 @@ or
     yarn install
  ```
 
-## Follow Next Steps
 
-You must add all integrations and update environment variables (.env) before starting server or running build command.
 
-The Home page has a Blog section and a Pricing section. For these to work you have to integrate Strip and Sanity. Follow the documentation and steps to complete these integrations. 
-
-**[2. Authentication and DB Setup (PostgreSQL on Vercel)](https://nextjstemplates.com/docs/authentication)**
-
-**[4. Sanity Integration.](https://nextjstemplates.com/docs/sanity)**
-
-**[3. Markdown Integration](https://nextjstemplates.com/docs/markdown)**
-
-**[5. Stripe Integration](https://nextjstemplates.com/docs/stripe)**
-    
----
-
-When all these are done, Then you can start the project on the local server
+You can start the project on the local server
     
 ```bash
     npm run dev
@@ -63,9 +49,3 @@ The documentation includes all the guides you need for the integrations.
 ### Deploying on PaaS
 
 If you are using a GitHub repo then you can go with free-of-cost and easy-to-use options like [Vercel](https://vercel.com/), or [Netlify](https://netlify.com/) they offer decent-free tiers for Next.js hosting.
-
-#### If you are using Prisma ORM (Comes with All Starter Templates)
-
-Make sure to edit build command like this while you use Prisma as ORM while deploying to Vercel.
-
-![prisma-vercel](https://nextjstemplates.com/docs/prisma-vercel.png)
