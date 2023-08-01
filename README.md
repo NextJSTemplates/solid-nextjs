@@ -14,6 +14,25 @@ This Next.js template's homepage comes with an awesome hero area, logos of assoc
 
 ### [🚀 Solid FREE Live Demo](https://solid-free.nextjstemplates.com/)
 
+### TailAdmin React PRO vs TailAdmin React FREE Comparison 📊
+
+#### [Solid PRO](https://solid.nextjstemplates.com/)
+- Next.js Boilerplate + Starter Kit with Essential Integrations and Functionalities
+- Integrations: Auth, DB, Stripe, MDX and More ...
+- Fully Functional Ready to Use Sanity Blog Support
+- Premium Email Support
+- Functional External Pages
+- Free Lifetime Future Updates
+___
+#### [Solid FREE](https://solid-free.nextjstemplates.com/)
+- Only UI - Coded for Next.js
+- No Integrations
+- No Functional Blogging System
+- External Pages without Functions/Integrations
+- Community Support
+- Free Lifetime Updates
+___
+
 ### [📦 Download](https://nextjstemplates.com/templates/solid)
 
 ### [🔥 Get Pro](https://nextjstemplates.com/templates/solid)
