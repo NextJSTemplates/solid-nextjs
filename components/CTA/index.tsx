@@ -59,7 +59,7 @@ const CTA = () => {
                 <Image
                   width={299}
                   height={299}
-                  src="./images/shape/shape-06.svg"
+                  src="/images/shape/shape-06.png"
                   alt="Saly"
                   className="hidden xl:block"
                 />
@@ -71,14 +71,14 @@ const CTA = () => {
                   <Image
                     width={20}
                     height={20}
-                    src="./images/icon/icon-arrow-dark.svg"
+                    src="/images/icon/icon-arrow-dark.svg"
                     alt="Arrow"
                     className="dark:hidden"
                   />
                   <Image
                     width={20}
                     height={20}
-                    src="./images/icon/icon-arrow-light.svg"
+                    src="/images/icon/icon-arrow-light.svg"
                     alt="Arrow"
                     className="hidden dark:block"
                   />
