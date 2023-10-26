@@ -6,9 +6,9 @@ const ThemeToggler = () => {
 
   return (
     <button
-    aria-label="theme toggler"
+      aria-label="theme toggler"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="bg-gray-2 dark:bg-dark-bg flex cursor-pointer items-center justify-center rounded-full text-black dark:text-white mr-1.5 absolute lg:static right-17"
+      className="bg-gray-2 dark:bg-dark-bg absolute right-17 mr-1.5 flex cursor-pointer items-center justify-center rounded-full text-black dark:text-white lg:static"
     >
       <Image
         src="/images/icon/icon-moon.svg"

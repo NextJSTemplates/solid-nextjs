@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-
 export default function Home() {
   return (
     <main>

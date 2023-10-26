@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const About = () => {
   return (
     <>
       {/* <!-- ===== About Start ===== --> */}
-      <section className="pb-20 lg:pb-25 xl:pb-30 overflow-hidden">
+      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
           <div className="flex items-center gap-8 lg:gap-32.5">
             <motion.div
@@ -27,7 +26,7 @@ const About = () => {
               whileInView="visible"
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="animate_left hidden md:block md:w-1/2 relative mx-auto aspect-[588/526.5]"
+              className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
                 src="/images/about/about-light-01.png"
@@ -60,15 +59,15 @@ const About = () => {
               viewport={{ once: true }}
               className="animate_right md:w-1/2"
             >
-              <h4 className="text-black dark:text-white font-medium uppercase">
-                <span className="bg-meta text-white text-metatitle inline-flex rounded-full py-1 px-4.5 mr-4 mb-4 uppercase ">
+              <span className="font-medium uppercase text-black dark:text-white">
+                <span className="mb-4 mr-4 inline-flex rounded-full bg-meta px-4.5 py-1 text-metatitle uppercase text-white ">
                   New
                 </span>{" "}
                 SaaS Boilerplate for Next.js
-              </h4>
-              <h2 className="relative font-bold text-black dark:text-white text-3xl xl:text-hero mb-6">
+              </span>
+              <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
                 A Complete Solution for
-                <span className="inline-block relative before:absolute before:bottom-2.5 before:left-0 before:w-full before:h-3 before:bg-titlebg dark:before:bg-titlebgdark before:-z-1">
+                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark">
                   SaaS Startup
                 </span>
               </h2>
@@ -78,28 +77,28 @@ const About = () => {
               </p>
 
               <div className="mt-7.5 flex items-center gap-5">
-                <div className="w-15 h-15 rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection flex items-center justify-center">
-                  <p className="text-black dark:text-white font-semibold text-metatitle2">
+                <div className="flex h-15 w-15 items-center justify-center rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection">
+                  <p className="text-metatitle2 font-semibold text-black dark:text-white">
                     01
                   </p>
                 </div>
                 <div className="w-3/4">
-                  <h5 className="text-black dark:text-white text-metatitle2 mb-0.5">
+                  <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
                     React 18, Next.js 13 and TypeScript
-                  </h5>
+                  </h3>
                   <p>Ut ultricies lacus non fermentum ultrices.</p>
                 </div>
               </div>
               <div className="mt-7.5 flex items-center gap-5">
-                <div className="w-15 h-15 rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection flex items-center justify-center">
-                  <p className="text-black dark:text-white font-semibold text-metatitle2">
+                <div className="flex h-15 w-15 items-center justify-center rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection">
+                  <p className="text-metatitle2 font-semibold text-black dark:text-white">
                     02
                   </p>
                 </div>
                 <div className="w-3/4">
-                  <h5 className="text-black dark:text-white text-metatitle2 mb-0.5">
+                  <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
                     Fully Customizable
-                  </h5>
+                  </h3>
                   <p>consectetur adipiscing elit fermentum ultricies.</p>
                 </div>
               </div>
@@ -111,7 +110,7 @@ const About = () => {
 
       {/* <!-- ===== About Two Start ===== --> */}
       <section>
-        <div className="mx-auto max-w-c-1235 px-4 md:px-8 2xl:px-0 overflow-hidden">
+        <div className="mx-auto max-w-c-1235 overflow-hidden px-4 md:px-8 2xl:px-0">
           <div className="flex items-center gap-8 lg:gap-32.5">
             <motion.div
               variants={{
@@ -131,12 +130,12 @@ const About = () => {
               viewport={{ once: true }}
               className="animate_left md:w-1/2"
             >
-              <h4 className="text-black dark:text-white font-medium uppercase">
+              <h4 className="font-medium uppercase text-black dark:text-white">
                 Launch Your SaaS Fast
               </h4>
-              <h2 className="relative font-bold text-black dark:text-white text-3xl xl:text-hero mb-6">
-                Packed with All Essential
-                <span className="inline-block relative before:absolute before:bottom-2.5 before:left-0 before:w-full before:h-3 before:bg-titlebg2 dark:before:bg-titlebgdark before:-z-1 ml-2.5">
+              <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
+                Packed with All Essential {"   "}
+                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark">
                   Integrations
                 </span>
               </h2>
@@ -147,28 +146,18 @@ const About = () => {
               <div>
                 <a
                   href="#"
-                  className="flex items-center gap-2.5 text-black dark:text-white mt-7.5 hover:text-primary dark:hover:text-primary"
+                  className="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
                 >
-                  <span className="hover:pr-2 duration-500">Know More</span>
+                  <span className="duration-300 group-hover:pr-2">
+                    Know More
+                  </span>
                   <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="dark:hidden"
-                  >
-                    <path d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z" />
-                  </svg>
-
-                  <svg
-                    className="hidden dark:block"
                     width="14"
                     height="14"
                     viewBox="0 0 14 14"
                     fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M10.4766 6.16664L6.00658 1.69664L7.18492 0.518311L13.6666 6.99998L7.18492 13.4816L6.00658 12.3033L10.4766 7.83331H0.333252V6.16664H10.4766Z" />
+                    <path d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z" />
                   </svg>
                 </a>
               </div>
@@ -189,7 +178,7 @@ const About = () => {
               whileInView="visible"
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
-              className="animate_right hidden md:block md:w-1/2 relative mx-auto aspect-[588/526.5]"
+              className="animate_right relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
                 src="./images/about/about-light-02.svg"

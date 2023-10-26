@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import faqData from "./faqData";
-import FAQItem from "./FAQItem";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
+import FAQItem from "./FAQItem";
+import faqData from "./faqData";
 
 const FAQ = () => {
   const [activeFaq, setActiveFaq] = useState(1);
@@ -15,9 +15,9 @@ const FAQ = () => {
   return (
     <>
       {/* <!-- ===== FAQ Start ===== --> */}
-      <section className="pb-20 lg:pb-25 xl:pb-30 overflow-hidden">
-        <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0 relative">
-          <div className="absolute -bottom-16 -z-1 w-full h-full">
+      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
+        <div className="relative mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
+          <div className="absolute -bottom-16 -z-1 h-full w-full">
             <Image
               fill
               src="/images/shape/shape-dotted-light.svg"
@@ -31,7 +31,7 @@ const FAQ = () => {
               className="hidden dark:block"
             />
           </div>
-          <div className="flex flex-wrap md:flex-nowrap md:items-center gap-8 xl:gap-32.5">
+          <div className="flex flex-wrap gap-8 md:flex-nowrap md:items-center xl:gap-32.5">
             <motion.div
               variants={{
                 hidden: {
@@ -50,21 +50,21 @@ const FAQ = () => {
               viewport={{ once: true }}
               className="animate_left md:w-2/5 lg:w-1/2"
             >
-              <h4 className="text-black dark:text-white font-medium uppercase">
+              <span className="font-medium uppercase text-black dark:text-white">
                 OUR FAQS
-              </h4>
-              <h2 className="relative font-bold text-black dark:text-white text-3xl xl:text-hero mb-6">
+              </span>
+              <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
                 Frequently Asked
-                <span className="inline-block relative before:absolute before:bottom-2.5 before:left-0 before:w-full before:h-3 before:bg-titlebg2 dark:before:bg-titlebgdark before:-z-1">
+                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark">
                   Questions
                 </span>
               </h2>
 
               <a
                 href="#"
-                className="flex items-center gap-2.5 text-black dark:text-white mt-7.5 hover:text-primary dark:hover:text-primary"
+                className="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
               >
-                <span className="hover:pr-2 duration-500">Know More</span>
+                <span className="duration-300 group-hover:pr-2">Know More</span>
                 <svg
                   width="14"
                   height="14"
@@ -97,7 +97,7 @@ const FAQ = () => {
               viewport={{ once: true }}
               className="animate_right md:w-3/5 lg:w-1/2"
             >
-              <div className="bg-white dark:bg-blacksection dark:border dark:border-strokedark shadow-solid-8 rounded-lg">
+              <div className="rounded-lg bg-white shadow-solid-8 dark:border dark:border-strokedark dark:bg-blacksection">
                 {faqData.map((faq, key) => (
                   <FAQItem
                     key={key}

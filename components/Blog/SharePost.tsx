@@ -1,17 +1,15 @@
-import React from "react";
-
 const SharePost = () => {
   return (
     <>
-      <div className="flex flex-wrap gap-4 md:gap-0 md:justify-between md:items-center mt-11">
+      <div className="mt-11 flex flex-wrap gap-4 md:items-center md:justify-between md:gap-0">
         <ul className="flex items-center gap-6">
           <li>
             <p className="text-black dark:text-white">Share On:</p>
           </li>
           <li>
-            <a href="#">
+            <a href="#" aria-label="social link">
               <svg
-                className="fill-[#D1D8E0] hover:fill-primary transition-all duration-300"
+                className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -33,9 +31,9 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" aria-label="social link">
               <svg
-                className="fill-[#D1D8E0] hover:fill-primary transition-all duration-300"
+                className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -57,9 +55,9 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" aria-label="social link">
               <svg
-                className="fill-[#D1D8E0] hover:fill-primary transition-all duration-300"
+                className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -81,9 +79,9 @@ const SharePost = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" aria-label="social link">
               <svg
-                className="fill-[#D1D8E0] hover:fill-primary transition-all duration-300"
+                className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -109,12 +107,12 @@ const SharePost = () => {
           <li>
             <a
               href="#"
-              className="hover:text-primary ease-in-out duration-300 pr-2"
+              className="pr-2 duration-300 ease-in-out hover:text-primary"
             >
               #business
             </a>
 
-            <a href="#" className="hover:text-primary ease-in-out duration-300">
+            <a href="#" className="duration-300 ease-in-out hover:text-primary">
               #saas
             </a>
           </li>

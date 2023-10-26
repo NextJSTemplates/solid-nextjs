@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -12,14 +12,13 @@ const Signup = () => {
     password: "",
   });
 
-
   return (
     <>
       {/* <!-- ===== SignUp Form Start ===== --> */}
-      <section className="pt-32.5 lg:pt-45 xl:pt-50 pb-12.5 lg:pb-25 xl:pb-30">
-        <div className="mx-auto max-w-c-1016 relative z-1 pt-10 lg:pt-15 xl:pt-20 pb-7.5 px-7.5 lg:px-15 xl:px-20">
-          <div className="absolute -z-1 rounded-lg left-0 top-0 w-full h-2/3 bg-gradient-to-t from-[#F8F9FF] to-[#dee7ff47] dark:bg-gradient-to-t dark:from-[#24283E] dark:to-[#252A42]"></div>
-          <div className="absolute -z-1 bottom-17.5 left-0 w-full h-1/3">
+      <section className="pb-12.5 pt-32.5 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+        <div className="relative z-1 mx-auto max-w-c-1016 px-7.5 pb-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
+          <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
+          <div className="absolute bottom-17.5 left-0 -z-1 h-1/3 w-full">
             <Image
               src="/images/shape/shape-dotted-light.svg"
               alt="Dotted"
@@ -50,17 +49,16 @@ const Signup = () => {
             whileInView="visible"
             transition={{ duration: 1, delay: 0.1 }}
             viewport={{ once: true }}
-            className="animate_top shadow-solid-8 rounded-lg bg-white dark:bg-black dark:border dark:border-strokedark pt-7.5 xl:pt-15 px-7.5 xl:px-15"
+            className="animate_top rounded-lg bg-white px-7.5 pt-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black xl:px-15 xl:pt-15"
           >
-            <h2 className="text-black dark:text-white text-3xl xl:text-sectiontitle2 font-semibold mb-15 text-center">
+            <h2 className="mb-15 text-center text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
               Create an Account
             </h2>
 
             <div className="flex items-center gap-8">
               <button
                 aria-label="signup with google"
-     
-                className="mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] py-3 px-6 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
               >
                 <span className="mr-3">
                   <svg
@@ -100,8 +98,7 @@ const Signup = () => {
 
               <button
                 aria-label="signup with github"
-
-                className="mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] py-3 px-6 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
               >
                 <span className="mr-3">
                   <svg
@@ -119,15 +116,15 @@ const Signup = () => {
             </div>
 
             <div className="mb-10 flex items-center justify-center">
-              <span className="hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-stroke-dark sm:block"></span>
-              <p className="w-full px-5 text-center text-base text-body-color dark:text-body-color-dark">
+              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
+              <p className="text-body-color dark:text-body-color-dark w-full px-5 text-center text-base">
                 Or, register with your email
               </p>
-              <span className="hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-stroke-dark sm:block"></span>
+              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
             </div>
 
             <form>
-              <div className="flex flex-col lg:flex-row lg:justify-between gap-7.5 lg:gap-14 mb-7.5 lg:mb-12.5">
+              <div className="mb-7.5 flex flex-col gap-7.5 lg:mb-12.5 lg:flex-row lg:justify-between lg:gap-14">
                 <input
                   name="firstName"
                   type="text"
@@ -136,7 +133,7 @@ const Signup = () => {
                   onChange={(e) =>
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
-                  className="w-full lg:w-1/2 bg-transparent border-b border-stroke dark:border-strokedark focus-visible:outline-none focus:border-waterloo dark:focus:border-manatee focus:placeholder:text-black dark:focus:placeholder:text-white pb-3.5"
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                 />
 
                 <input
@@ -147,11 +144,11 @@ const Signup = () => {
                   onChange={(e) =>
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
-                  className="w-full lg:w-1/2 bg-transparent border-b border-stroke dark:border-strokedark focus-visible:outline-none focus:border-waterloo dark:focus:border-manatee focus:placeholder:text-black dark:focus:placeholder:text-white pb-3.5"
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                 />
               </div>
 
-              <div className="flex flex-col lg:flex-row lg:justify-between gap-7.5 lg:gap-14 mb-7.5 lg:mb-12.5">
+              <div className="mb-7.5 flex flex-col gap-7.5 lg:mb-12.5 lg:flex-row lg:justify-between lg:gap-14">
                 <input
                   name="email"
                   type="email"
@@ -160,7 +157,7 @@ const Signup = () => {
                   onChange={(e) =>
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
-                  className="w-full lg:w-1/2 bg-transparent border-b border-stroke dark:border-strokedark focus-visible:outline-none focus:border-waterloo dark:focus:border-manatee focus:placeholder:text-black dark:focus:placeholder:text-white pb-3.5"
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                 />
 
                 <input
@@ -171,27 +168,46 @@ const Signup = () => {
                   onChange={(e) =>
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
-                  className="w-full lg:w-1/2 bg-transparent border-b border-stroke dark:border-strokedark focus-visible:outline-none focus:border-waterloo dark:focus:border-manatee focus:placeholder:text-black dark:focus:placeholder:text-white pb-3.5"
+                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                 />
               </div>
 
-              <div className="flex flex-wrap md:justify-between gap-10 xl:gap-15">
-                <div className="flex items-center mb-4">
+              <div className="flex flex-wrap gap-10 md:justify-between xl:gap-15">
+                <div className="mb-4 flex items-center">
                   <input
                     id="default-checkbox"
                     type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="peer sr-only"
                   />
+                  <span className="border-gray-300 bg-gray-100 text-blue-600 dark:border-gray-600 dark:bg-gray-700 group mt-1 flex h-5 min-w-[20px] items-center justify-center rounded peer-checked:bg-primary">
+                    <svg
+                      className="opacity-0 peer-checked:group-[]:opacity-100"
+                      width="10"
+                      height="8"
+                      viewBox="0 0 10 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M9.70704 0.792787C9.89451 0.980314 9.99983 1.23462 9.99983 1.49979C9.99983 1.76495 9.89451 2.01926 9.70704 2.20679L4.70704 7.20679C4.51951 7.39426 4.26521 7.49957 4.00004 7.49957C3.73488 7.49957 3.48057 7.39426 3.29304 7.20679L0.293041 4.20679C0.110883 4.01818 0.0100885 3.76558 0.0123669 3.50339C0.0146453 3.24119 0.119814 2.99038 0.305222 2.80497C0.490631 2.61956 0.741443 2.51439 1.00364 2.51211C1.26584 2.50983 1.51844 2.61063 1.70704 2.79279L4.00004 5.08579L8.29304 0.792787C8.48057 0.605316 8.73488 0.5 9.00004 0.5C9.26521 0.5 9.51951 0.605316 9.70704 0.792787Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </span>
                   <label
                     htmlFor="default-checkbox"
-                    className="max-w-[425px] flex cursor-pointer select-none  pl-3"
+                    className="flex max-w-[425px] cursor-pointer select-none  pl-3"
                   >
                     Keep me signed in
                   </label>
                 </div>
 
-                <button aria-label="signup with email and password" className="inline-flex items-center gap-2.5 bg-black dark:bg-btndark hover:bg-blackho ease-in-out duration-300 font-medium text-white rounded-full px-6 py-3">
+                <button
+                  aria-label="signup with email and password"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+                >
                   Create Account
                   <svg
                     className="fill-white"
@@ -209,11 +225,11 @@ const Signup = () => {
                 </button>
               </div>
 
-              <div className="text-center border-t border-stroke dark:border-strokedark mt-12.5 py-5">
+              <div className="mt-12.5 border-t border-stroke py-5 text-center dark:border-strokedark">
                 <p>
                   Already have an account?{" "}
                   <Link
-                    className="text-black dark:text-white hover:text-primary dark:hover:text-primary"
+                    className="text-black hover:text-primary dark:text-white dark:hover:text-primary"
                     href="/auth/signin"
                   >
                     Sign In

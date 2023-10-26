@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
@@ -29,21 +29,21 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-0 top-0 w-full z-99999 py-7 ${
+      className={`fixed left-0 top-0 z-99999 w-full py-7 ${
         stickyMenu
-          ? "bg-white dark:bg-black shadow !py-4 transition duration-100"
+          ? "bg-white !py-4 shadow transition duration-100 dark:bg-black"
           : ""
       }`}
     >
-      <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0 lg:flex items-center justify-between relative">
-        <div className="w-full lg:w-1/4 flex items-center justify-between">
+      <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+        <div className="flex w-full items-center justify-between xl:w-1/4">
           <a href="/">
             <Image
               src="/images/logo/logo-dark.svg"
               alt="logo"
               width={119.03}
               height={30}
-              className="w-full hidden dark:block"
+              className="hidden w-full dark:block"
             />
             <Image
               src="/images/logo/logo-light.svg"
@@ -57,36 +57,36 @@ const Header = () => {
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
             aria-label="hamburger Toggler"
-            className="lg:hidden block"
+            className="block xl:hidden"
             onClick={() => setNavigationOpen(!navigationOpen)}
           >
-            <span className="block relative cursor-pointer w-5.5 h-5.5">
-              <span className="block absolute w-full h-full">
+            <span className="relative block h-5.5 w-5.5 cursor-pointer">
+              <span className="absolute right-0 block h-full w-full">
                 <span
-                  className={`block relative top-0 left-0 bg-black dark:bg-white rounded-sm w-0 h-0.5 my-1 ease-in-out duration-200 delay-[0] ${
-                    !navigationOpen ? "!w-full delay-300" : ""
+                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!w-full delay-300" : "w-0"
                   }`}
                 ></span>
                 <span
-                  className={`block relative top-0 left-0 bg-black dark:bg-white rounded-sm w-0 h-0.5 my-1 ease-in-out duration-200 delay-150 ${
-                    !navigationOpen ? "!w-full delay-400" : ""
+                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "delay-400 !w-full" : "w-0"
                   }`}
                 ></span>
                 <span
-                  className={`block relative top-0 left-0 bg-black dark:bg-white rounded-sm w-0 h-0.5 my-1 ease-in-out duration-200 delay-200 ${
-                    !navigationOpen ? "!w-full delay-500" : ""
+                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!w-full delay-500" : "w-0"
                   }`}
                 ></span>
               </span>
-              <span className="block absolute w-full h-full rotate-45">
+              <span className="du-block absolute right-0 h-full w-full rotate-45">
                 <span
-                  className={`block bg-black dark:bg-white rounded-sm ease-in-out duration-200 delay-300 absolute left-2.5 top-0 w-0.5 h-0 ${
-                    navigationOpen ? "h-full delay-[0]" : ""
+                  className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!h-0 delay-[0]" : "h-full"
                   }`}
                 ></span>
                 <span
-                  className={`block bg-black dark:bg-white rounded-sm ease-in-out duration-200 delay-400 absolute left-0 top-[.03rem] w-full h-0 ${
-                    navigationOpen ? "h-0.5 dealy-200" : ""
+                  className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!h-0 delay-200" : "h-0.5"
                   }`}
                 ></span>
               </span>
@@ -97,32 +97,32 @@ const Header = () => {
 
         {/* Nav Menu Start   */}
         <div
-          className={`w-full lg:w-full h-0 lg:h-auto invisible lg:visible lg:flex items-center justify-between ${
+          className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-full ${
             navigationOpen &&
-            "!visible bg-white dark:bg-blacksection shadow-solid-5 h-auto max-h-[400px] overflow-y-scroll rounded-md mt-4 p-7.5"
+            "navbar !visible mt-4 h-auto max-h-[400px] rounded-md bg-white p-7.5 shadow-solid-5 dark:bg-blacksection xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
           }`}
         >
           <nav>
-            <ul className="flex lg:items-center flex-col lg:flex-row gap-5 lg:gap-10">
+            <ul className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-10">
               {menuData.map((menuItem, key) => (
                 <li key={key} className={menuItem.submenu && "group relative"}>
                   {menuItem.submenu ? (
                     <>
-                      <a
+                      <button
                         onClick={() => setDropdownToggler(!dropdownToggler)}
-                        className="hover:text-primary flex items-center justify-between gap-3 cursor-pointer"
+                        className="flex cursor-pointer items-center justify-between gap-3 hover:text-primary"
                       >
                         {menuItem.title}
                         <span>
                           <svg
-                            className="fill-waterloo group-hover:fill-primary w-3 h-3 cursor-pointer"
+                            className="h-3 w-3 cursor-pointer fill-waterloo group-hover:fill-primary"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
                           >
                             <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
                           </svg>
                         </span>
-                      </a>
+                      </button>
 
                       <ul
                         className={`dropdown ${dropdownToggler ? "flex" : ""}`}
@@ -139,7 +139,7 @@ const Header = () => {
                       href={`${menuItem.path}`}
                       className={
                         pathUrl === menuItem.path
-                          ? "hover:text-primary text-primary"
+                          ? "text-primary hover:text-primary"
                           : "hover:text-primary"
                       }
                     >
@@ -151,19 +151,19 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-6 mt-7 lg:mt-0">
+          <div className="mt-7 flex items-center gap-6 xl:mt-0">
             <ThemeToggler />
 
             <Link
               href="https://github.com/NextJSTemplates/solid-nextjs"
-              className="text-waterloo text-regular font-medium hover:text-primary"
+              className="text-regular font-medium text-waterloo hover:text-primary"
             >
-            GitHub Repo 🌟
+              GitHub Repo 🌟
             </Link>
 
             <Link
               href="https://nextjstemplates.com/templates/solid"
-              className="flex items-center justify-center bg-primary hover:bg-primaryho ease-in-out duration-300 text-white text-regular rounded-full py-2.5 px-7.5"
+              className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white duration-300 ease-in-out hover:bg-primaryho"
             >
               Get Pro 🔥
             </Link>

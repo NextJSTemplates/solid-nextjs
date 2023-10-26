@@ -2,31 +2,30 @@
 import Link from "next/link";
 
 const SidebarLink = () => {
-
   return (
     <>
       <li className="block">
         <Link
           href={`/docs`}
-          className={`text-base py-2 px-3 rounded-sm flex w-full bg-stroke text-black dark:text-white dark:bg-blackho`}
+          className={`flex w-full rounded-sm bg-stroke px-3 py-2 text-base text-black dark:bg-blackho dark:text-white`}
         >
           Introduction
         </Link>
         <Link
           href={`/docs`}
-          className={`text-base py-2 px-3 rounded-sm flex w-full text-black dark:text-white `}
+          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
           Bootstrap Template Guide
         </Link>
         <Link
           href={`/docs`}
-          className={`text-base py-2 px-3 rounded-sm flex w-full text-black dark:text-white `}
+          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
           Style Guide
         </Link>
         <Link
           href={`/docs`}
-          className={`text-base py-2 px-3 rounded-sm flex w-full text-black dark:text-white `}
+          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
           Using Tailwind Components
         </Link>

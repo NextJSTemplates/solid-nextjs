@@ -1,16 +1,22 @@
-import Image from "next/image";
-import SharePost from "@/components/Blog/SharePost";
 import RelatedPost from "@/components/Blog/RelatedPost";
+import SharePost from "@/components/Blog/SharePost";
+import { Metadata } from "next";
+import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Blog Details Page - Solid SaaS Boilerplate",
+  description: "This is Blog details page for Solid Pro",
+  // other metadata
+};
 
 const SingleBlogPage = async () => {
   return (
     <>
-      <title>{`Blog Details - Solid`}</title>
-      <section className="pt-35 lg:pt-45 xl:pt-50 pb-20 lg:pb-25 xl:pb-30">
+      <section className="pb-20 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
-          <div className="flex flex-col-reverse lg:flex-row gap-7.5 xl:gap-12.5">
+          <div className="flex flex-col-reverse gap-7.5 lg:flex-row xl:gap-12.5">
             <div className="md:w-1/2 lg:w-[32%]">
-              <div className="animate_top rounded-md shadow-solid-13 bg-white dark:bg-blacksection border border-stroke dark:border-strokedark p-3.5 mb-10">
+              <div className="animate_top mb-10 rounded-md border border-stroke bg-white p-3.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection">
                 <form
                   action="https://formbold.com/s/unique_form_id"
                   method="POST"
@@ -19,15 +25,15 @@ const SingleBlogPage = async () => {
                     <input
                       type="text"
                       placeholder="Search Here..."
-                      className="w-full dark:bg-black border border-stroke dark:border-strokedark shadow-solid-12 dark:shadow-none rounded-lg focus:outline-none focus:border-primary dark:focus:border-primary py-4 px-6"
+                      className="w-full rounded-lg border border-stroke px-6 py-4 shadow-solid-12 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                     />
 
                     <button
-                      className="absolute top-0 right-0 p-5"
+                      className="absolute right-0 top-0 p-5"
                       aria-label="search-icon"
                     >
                       <svg
-                        className="fill-black dark:fill-white hover:fill-primary dark:hover:fill-primary transition-all duration-300"
+                        className="fill-black transition-all duration-300 hover:fill-primary dark:fill-white dark:hover:fill-primary"
                         width="21"
                         height="21"
                         viewBox="0 0 21 21"
@@ -41,25 +47,25 @@ const SingleBlogPage = async () => {
                 </form>
               </div>
 
-              <div className="animate_top rounded-md shadow-solid-13 bg-white dark:bg-blacksection border border-stroke dark:border-strokedark p-9 mb-10">
-                <h4 className="font-semibold text-2xl text-black dark:text-white mb-7.5">
+              <div className="animate_top mb-10 rounded-md border border-stroke bg-white p-9 shadow-solid-13 dark:border-strokedark dark:bg-blacksection">
+                <h4 className="mb-7.5 text-2xl font-semibold text-black dark:text-white">
                   Categories
                 </h4>
 
                 <ul>
-                  <li className="last:mb-0 mb-3 transition-all duration-300 hover:text-primary">
+                  <li className="mb-3 transition-all duration-300 last:mb-0 hover:text-primary">
                     <a href="#">Blog</a>
                   </li>
-                  <li className="last:mb-0 mb-3 transition-all duration-300 hover:text-primary">
+                  <li className="mb-3 transition-all duration-300 last:mb-0 hover:text-primary">
                     <a href="#">Events</a>
                   </li>
-                  <li className="last:mb-0 mb-3 transition-all duration-300 hover:text-primary">
+                  <li className="mb-3 transition-all duration-300 last:mb-0 hover:text-primary">
                     <a href="#">Grids</a>
                   </li>
-                  <li className="last:mb-0 mb-3 transition-all duration-300 hover:text-primary">
+                  <li className="mb-3 transition-all duration-300 last:mb-0 hover:text-primary">
                     <a href="#">News</a>
                   </li>
-                  <li className="last:mb-0 mb-3 transition-all duration-300 hover:text-primary">
+                  <li className="mb-3 transition-all duration-300 last:mb-0 hover:text-primary">
                     <a href="#">Rounded</a>
                   </li>
                 </ul>
@@ -69,23 +75,23 @@ const SingleBlogPage = async () => {
             </div>
 
             <div className="lg:w-2/3">
-              <div className="animate_top rounded-md shadow-solid-13 bg-white dark:bg-blacksection border border-stroke dark:border-strokedark p-7.5 md:p-10">
+              <div className="animate_top rounded-md border border-stroke bg-white p-7.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection md:p-10">
                 <div className="mb-10 w-full overflow-hidden ">
                   <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                     <Image
                       src={"/images/blog/blog-01.png"}
                       alt="Kobe Steel plant that supplied"
                       fill
-                      className="object-cover object-center rounded-md"
+                      className="rounded-md object-cover object-center"
                     />
                   </div>
                 </div>
 
-                <h2 className="font-semibold text-3xl 2xl:text-sectiontitle2 text-black dark:text-white mt-11 mb-5">
+                <h2 className="mb-5 mt-11 text-3xl font-semibold text-black dark:text-white 2xl:text-sectiontitle2">
                   Kobe Steel plant that supplied
                 </h2>
 
-                <ul className="flex flex-wrap gap-5 2xl:gap-7.5 mb-9">
+                <ul className="mb-9 flex flex-wrap gap-5 2xl:gap-7.5">
                   <li>
                     <span className="text-black dark:text-white">Author: </span>{" "}
                     Jhon Doe
@@ -139,7 +145,9 @@ const SingleBlogPage = async () => {
                     />
                   </div>
 
-                  <h3 className="pt-8">Nunc elementum elit viverra, tempus quam non</h3>
+                  <h3 className="pt-8">
+                    Nunc elementum elit viverra, tempus quam non
+                  </h3>
 
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

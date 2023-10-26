@@ -5,25 +5,25 @@ const menuData: Menu[] = [
     id: 1,
     title: "Home",
     newTab: false,
-    path: "/"
+    path: "/",
   },
   {
     id: 2,
     title: "Features",
     newTab: false,
-    path: "/#features"
+    path: "/#features",
   },
   {
     id: 2.1,
     title: "Blog",
     newTab: false,
-    path: "/blog"
+    path: "/blog",
   },
   {
     id: 2.3,
     title: "Docs",
     newTab: false,
-    path: "/docs"
+    path: "/docs",
   },
   {
     id: 3,
@@ -73,7 +73,7 @@ const menuData: Menu[] = [
     id: 4,
     title: "Support",
     newTab: false,
-    path: "/support"
+    path: "/support",
   },
 ];
 

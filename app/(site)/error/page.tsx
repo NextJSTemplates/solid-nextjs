@@ -1,7 +1,5 @@
-import React from "react";
-import Image from "next/image";
 import { Metadata } from "next";
-
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Error Page - Solid SaaS Boilerplate",
@@ -11,7 +9,7 @@ export const metadata: Metadata = {
 
 const ErroPage = () => {
   return (
-    <section className="pt-45 lg:pt-50 xl:pt-55 pb-25 lg:pb-32.5 xl:pb-37.5 overflow-hidden">
+    <section className="overflow-hidden pb-25 pt-45 lg:pb-32.5 lg:pt-50 xl:pb-37.5 xl:pt-55">
       <div className="animate_top mx-auto max-w-[518px] text-center">
         <Image
           src="/images/shape/404.svg"
@@ -21,7 +19,7 @@ const ErroPage = () => {
           height={400}
         />
 
-        <h2 className="font-semibold text-2xl md:text-4xl text-black dark:text-white mb-5">
+        <h2 className="mb-5 text-2xl font-semibold text-black dark:text-white md:text-4xl">
           This Page Does Not Exist
         </h2>
         <p className="mb-7.5">
@@ -31,7 +29,7 @@ const ErroPage = () => {
 
         <a
           href="/"
-          className="inline-flex items-center gap-2.5 bg-black dark:bg-btndark hover:bg-blackho ease-in-out duration-300 font-medium text-white rounded-full px-6 py-3"
+          className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
         >
           Return to Home
           <svg
