@@ -4,44 +4,44 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: "/images/icon/icon-01.svg",
-    title: "Crafted for SaaS",
+    title: "AI Integration",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Enhances predictive analytics and decision-making.",
   },
   {
     id: 2,
     icon: "/images/icon/icon-02.svg",
-    title: "High-quality Design",
+    title: "Data Security",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Utilizes advanced encryption and secure methods for data handling.",
   },
   {
     id: 3,
     icon: "/images/icon/icon-03.svg",
-    title: "Next.js 13 + TypeScript",
+    title: "User-Friendly Interface",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Easy navigation for users of all technical skill levels.",
   },
   {
     id: 4,
     icon: "/images/icon/icon-04.svg",
-    title: "Sanity Blog and Docs",
+    title: "Regulatory Compliance",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Meets international standards including MDR, IVDR, and GDPR.",
   },
   {
     id: 5,
     icon: "/images/icon/icon-05.svg",
-    title: "DB, Auth and Stripe",
+    title: "Efficiency",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Streamlines the data collection and analysis process.",
   },
   {
     id: 6,
     icon: "/images/icon/icon-06.svg",
-    title: "Regular Free Updates",
+    title: "Customization",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Flexible tools allow for tailored analyses, meeting diverse research needs.",
   },
 ];
 
