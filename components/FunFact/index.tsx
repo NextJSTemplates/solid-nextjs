@@ -58,11 +58,6 @@ const FunFact = () => {
             <h2 className="mb-4 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
               Trusted by Global Companies.
             </h2>
-            <p className="mx-auto lg:w-11/12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam
-              ante in maximus.
-            </p>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-8 lg:gap-42.5">

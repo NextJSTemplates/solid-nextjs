@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Hero from "@/components/Hero";
-import Brands from "@/components/Brands";
 import Feature from "@/components/Features";
 import About from "@/components/About";
 import FeaturesTab from "@/components/FeaturesTab";
@@ -14,8 +13,8 @@ import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 
 export const metadata: Metadata = {
-  title: "Next.js Starter Template for SaaS Startups - Solid SaaS Boilerplate",
-  description: "This is Home for Solid Pro",
+  title: "Dainest - A new pioneer in clinical research software solutions",
+  description: "",
   // other metadata
 };
 
@@ -23,7 +22,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Brands />
       <Feature />
       <About />
       <FeaturesTab />
