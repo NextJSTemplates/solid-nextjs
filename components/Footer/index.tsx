@@ -46,7 +46,9 @@ const Footer = () => {
                 </a>
 
                 <p className="mb-10 mt-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  At Krv, we unlock AI's potential through transparency and
+                  innovation, making it a trusted, explainable partner in
+                  decision-making.
                 </p>
 
                 <p className="mb-1.5 text-sectiontitle uppercase tracking-[5px]">
@@ -56,7 +58,7 @@ const Footer = () => {
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  hello@solid.com
+                  krv.origin@gmail.com
                 </a>
               </motion.div>
 
