@@ -63,17 +63,19 @@ const About = () => {
                 <span className="mb-4 mr-4 inline-flex rounded-full bg-meta px-4.5 py-1 text-metatitle uppercase text-white ">
                   New
                 </span>{" "}
-                SaaS Boilerplate for Next.js
+                Our Secret Sauce
               </span>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                A Complete Solution for
+                Dynamic Processing via {"   "}
                 <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark">
-                  SaaS Startup
+                  Reliability Metrics
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                ultricies lacus non fermentum ultrices. Fusce consectetur le.
+                Krv Analytics empowers businesses to harness the power of their
+                data. Our solutions simplify high-dimensional, sparse datasets,
+                enabling domain experts to see into the black box of machine
+                learning.
               </p>
 
               <div className="mt-7.5 flex items-center gap-5">
@@ -84,9 +86,14 @@ const About = () => {
                 </div>
                 <div className="w-3/4">
                   <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    React 18, Next.js 13 and TypeScript
+                    Sensitivity Analysis for Preprocessing
                   </h3>
-                  <p>Ut ultricies lacus non fermentum ultrices.</p>
+                  <p>
+                    Reliability metrics reveal how changes in data preprocessing
+                    impact machine learning outcomes. By quantifying
+                    sensitivity, they help users identify preprocessing choices
+                    that lead to consistent, trustworthy results.
+                  </p>
                 </div>
               </div>
               <div className="mt-7.5 flex items-center gap-5">
@@ -97,9 +104,15 @@ const About = () => {
                 </div>
                 <div className="w-3/4">
                   <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    Fully Customizable
+                    Ensuring Robust Decision-Making
                   </h3>
-                  <p>consectetur adipiscing elit fermentum ultricies.</p>
+                  <p>
+                    With reliability metrics, businesses can assess whether
+                    their data can reliably answer critical questions. If ML
+                    results drastically change due to preprocessing, these
+                    metrics guide users toward identifying the most dependable
+                    configurations.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -131,17 +144,19 @@ const About = () => {
               className="animate_left md:w-1/2"
             >
               <h4 className="font-medium uppercase text-black dark:text-white">
-                Launch Your SaaS Fast
+                Stear Clear Of
               </h4>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                Packed with All Essential {"   "}
+                Analysis {"   "}
                 <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark">
-                  Integrations
+                  Paralysis
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                ultricies lacus non fermentum ultrices. Fusce consectetur le.
+                Beyond graph advantages — like uncovering hidden patterns,
+                enabling non-technical insights, and making data searchable — we
+                keep pace with new methods while shielding users from choice
+                overload.
               </p>
               <div>
                 <a
