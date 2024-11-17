@@ -153,19 +153,19 @@ const Header = () => {
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
             <ThemeToggler />
-
+            {/* 
             <Link
-              href="https://github.com/NextJSTemplates/solid-nextjs"
+              href="https://github.com/Krv-Analytics"
               className="text-regular font-medium text-waterloo hover:text-primary"
             >
-              GitHub Repo 🌟
-            </Link>
+              Find us on GitHub
+            </Link> */}
 
             <Link
-              href="https://nextjstemplates.com/templates/solid"
+              href="https://github.com/Krv-Analytics"
               className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white duration-300 ease-in-out hover:bg-primaryho"
             >
-              Get Pro 🔥
+              Find us on GitHub
             </Link>
           </div>
         </div>

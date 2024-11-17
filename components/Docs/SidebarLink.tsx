@@ -1,4 +1,4 @@
-"use client";
+// components/Docs/SidebarLink.tsx
 import Link from "next/link";
 
 const SidebarLink = () => {
@@ -12,22 +12,10 @@ const SidebarLink = () => {
           Introduction
         </Link>
         <Link
-          href={`/docs`}
+          href={`/docs/`} // Updated the href to point to the new page
           className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
-          Bootstrap Template Guide
-        </Link>
-        <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
-        >
-          Style Guide
-        </Link>
-        <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
-        >
-          Using Tailwind Components
+          Projects
         </Link>
       </li>
     </>

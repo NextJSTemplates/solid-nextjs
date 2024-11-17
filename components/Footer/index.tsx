@@ -58,7 +58,7 @@ const Footer = () => {
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  krv.origin@gmail.com
+                  team@krv.ai
                 </a>
               </motion.div>
 

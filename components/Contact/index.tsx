@@ -189,7 +189,7 @@ const Contact = () => {
                   Email Address
                 </h3>
                 <p>
-                  <a href="#">krv.origin@gmail.com</a>
+                  <a href="#">team@krv.ai</a>
                 </p>
               </div>
               {/* <div>
