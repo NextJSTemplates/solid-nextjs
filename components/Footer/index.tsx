@@ -55,7 +55,7 @@ const Footer = () => {
                   contact
                 </p>
                 <a
-                  href="#"
+                  href="mailto:team@krv.ai"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
                   team@krv.ai
@@ -82,27 +82,27 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Quick Links
+                    Find Us
                   </h4>
 
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="https://github.com/Krv-Analytics"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Home
+                        Github
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="https://www.linkedin.com/company/krv-analytics/?viewAsMember=true"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Product
+                        LinkedIn
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="#"
                         className="mb-3 inline-block hover:text-primary"
@@ -117,7 +117,7 @@ const Footer = () => {
                       >
                         Pricing
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </motion.div>
 
@@ -140,40 +140,40 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Support
+                    Quick Links
                   </h4>
 
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Company
+                        Home
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/#features"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Press media
+                        Features
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/blog"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Our Blog
+                        Meet the Team
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/docs"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Contact Us
+                        About
                       </a>
                     </li>
                   </ul>
@@ -265,7 +265,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <ul className="flex items-center gap-8">
+              {/* <ul className="flex items-center gap-8">
                 <li>
                   <a href="#" className="hover:text-primary">
                     English
@@ -281,7 +281,7 @@ const Footer = () => {
                     Support
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </motion.div>
 
             <motion.div
@@ -303,7 +303,8 @@ const Footer = () => {
               className="animate_top"
             >
               <p>
-                &copy; {new Date().getFullYear()} Solid. All rights reserved
+                &copy; {new Date().getFullYear()} Krv Analytics. All rights
+                reserved.
               </p>
             </motion.div>
 
@@ -325,7 +326,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <ul className="flex items-center gap-5">
+              {/* <ul className="flex items-center gap-5">
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
@@ -418,7 +419,7 @@ const Footer = () => {
                     </svg>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </motion.div>
           </div>
           {/* <!-- Footer Bottom --> */}

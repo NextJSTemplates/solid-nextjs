@@ -60,10 +60,7 @@ const Contact = () => {
                 Send a message
               </h2>
 
-              <form
-                action="https://formbold.com/s/unique_form_id"
-                method="POST"
-              >
+              <form action="https://formbold.com/s/3A0Al" method="POST">
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
@@ -180,7 +177,7 @@ const Contact = () => {
 
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Our Loaction
+                  Our Location
                 </h3>
                 <p>Santa Monica, CA, USA</p>
               </div>
@@ -189,7 +186,7 @@ const Contact = () => {
                   Email Address
                 </h3>
                 <p>
-                  <a href="#">team@krv.ai</a>
+                  <a href="mailto:team@krv.ai">team@krv.ai</a>
                 </p>
               </div>
               {/* <div>

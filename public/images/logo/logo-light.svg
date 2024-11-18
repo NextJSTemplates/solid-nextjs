@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   viewBox="0 0 100 100"
-   class="h-15 w-14 transform scale-[1.2]"
+   viewBox="0 0 180 50"
+   class="h-15 w-45 transform scale-[1]"
    version="1.1"
    id="svg4"
-   sodipodi:docname="krv_logo_red.svg"
-   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="logo-dark.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   width="180"
+   height="50"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -19,46 +21,46 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="4.8756619"
-     inkscape:cx="38.046116"
-     inkscape:cy="49.326636"
-     inkscape:window-width="1512"
-     inkscape:window-height="854"
+     inkscape:zoom="5.8765274"
+     inkscape:cx="82.44665"
+     inkscape:cy="31.481177"
+     inkscape:window-width="1920"
+     inkscape:window-height="954"
      inkscape:window-x="0"
-     inkscape:window-y="38"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g4" />
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4"
+     showgrid="false" />
   <defs
      id="defs1">
     <!-- Any definitions go here -->
   </defs>
   <g
-     transform="translate(2.6472488,35.450041)"
+     transform="translate(34.468763,16.981558)"
      id="g4">
     <path
-       d="m 5.6008023,41.812478 c 39.3351787,0 47.9173997,-46.1022411 82.2462827,-53.785948"
+       d="m 6.4625918,24.579851 c 27.5000002,0 33.5000002,-29.9999996 57.5000002,-35"
        stroke="#ff0000"
        fill="transparent"
-       stroke-width="3.55825"
+       stroke-width="2.4"
        stroke-linecap="round"
        id="path1"
-       style="fill:none" />
+       style="fill:none;stroke:#ff0000;stroke-opacity:1" />
     <path
-       d="M 5.6008023,41.812478 C 44.935981,18.761357 16.328579,-4.2897631 87.847085,-11.97347"
+       d="m 6.4625918,24.579851 c 27.5000002,-14.9999996 7.5000002,-29.9999996 57.5000002,-35"
        stroke="#ff0000"
        fill="transparent"
-       stroke-width="1.92738"
+       stroke-width="1.3"
        stroke-linecap="round"
        id="path2"
-       style="fill:none" />
+       style="fill:none;stroke:#ff0000;stroke-opacity:1" />
     <text
        fill="#ff0000"
-       font-size="37.0651px"
+       font-size="25px"
        font-family="Verdana"
-       x="36.621117"
-       y="35.010181"
+       x="28.962591"
+       y="19.579851"
        id="text2"
-       transform="scale(0.96477007,1.0365164)"
-       style="stroke-width:1.4826">K</text>
+       style="fill:#ff0000;fill-opacity:1">K</text>
   </g>
 </svg>
