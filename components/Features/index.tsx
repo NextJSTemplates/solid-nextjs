@@ -13,11 +13,9 @@ const Feature = () => {
           {/* <!-- Section Title Start --> */}
           <SectionHeader
             headerInfo={{
-              title: "SOLID FEATURES",
-              subtitle: "Core Features of Solid",
-              description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-            convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam
-            ante in maximus.`,
+              title: "WHAT WE BRING",
+              subtitle: "Core Features of Our Graph-Based Analytics",
+              description: `We provide professionals with a powerful AI-focused, graph-based modeling environment to extract highly detailed and specific insights from complex data.`,
             }}
           />
           {/* <!-- Section Title End --> */}

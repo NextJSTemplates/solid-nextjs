@@ -46,21 +46,81 @@ const Footer = () => {
                 </a>
 
                 <p className="mb-10 mt-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  At Krv, we unlock AI's potential through transparency and
+                  innovation, making it a trusted, explainable partner in
+                  decision-making.
                 </p>
 
                 <p className="mb-1.5 text-sectiontitle uppercase tracking-[5px]">
                   contact
                 </p>
                 <a
-                  href="#"
+                  href="mailto:team@krv.ai"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  hello@solid.com
+                  team@krv.ai
                 </a>
               </motion.div>
 
               <div className="flex w-full flex-col gap-8 md:flex-row md:justify-between md:gap-0 lg:w-2/3 xl:w-7/12">
+                <motion.div
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      y: -20,
+                    },
+
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                    },
+                  }}
+                  initial="hidden"
+                  whileInView="visible"
+                  transition={{ duration: 1, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="animate_top"
+                >
+                  <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
+                    Find Us
+                  </h4>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="https://github.com/Krv-Analytics"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Github
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/company/krv-analytics/?viewAsMember=true"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        LinkedIn
+                      </a>
+                    </li>
+                    {/* <li>
+                      <a
+                        href="#"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Careers
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Pricing
+                      </a>
+                    </li> */}
+                  </ul>
+                </motion.div>
+
                 <motion.div
                   variants={{
                     hidden: {
@@ -86,7 +146,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Home
@@ -94,84 +154,26 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/#features"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Product
+                        Features
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/team"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Careers
+                        Meet the Team
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/contact"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Pricing
-                      </a>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: -20,
-                    },
-
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="visible"
-                  transition={{ duration: 1, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  className="animate_top"
-                >
-                  <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Support
-                  </h4>
-
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Company
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Press media
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Our Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Contact Us
+                        About
                       </a>
                     </li>
                   </ul>
@@ -263,7 +265,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <ul className="flex items-center gap-8">
+              {/* <ul className="flex items-center gap-8">
                 <li>
                   <a href="#" className="hover:text-primary">
                     English
@@ -279,7 +281,7 @@ const Footer = () => {
                     Support
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </motion.div>
 
             <motion.div
@@ -301,7 +303,8 @@ const Footer = () => {
               className="animate_top"
             >
               <p>
-                &copy; {new Date().getFullYear()} Solid. All rights reserved
+                &copy; {new Date().getFullYear()} Krv Analytics. All rights
+                reserved.
               </p>
             </motion.div>
 
@@ -323,7 +326,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <ul className="flex items-center gap-5">
+              {/* <ul className="flex items-center gap-5">
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
@@ -416,7 +419,7 @@ const Footer = () => {
                     </svg>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </motion.div>
           </div>
           {/* <!-- Footer Bottom --> */}

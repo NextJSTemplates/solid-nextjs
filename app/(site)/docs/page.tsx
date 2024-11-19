@@ -13,24 +13,47 @@ export default function DocsPage() {
       <section className="pb-16 pt-24 md:pb-20 md:pt-28 lg:pb-24 lg:pt-32">
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 lg:w-1/4">
+            {/* <div className="w-full px-4 lg:w-1/4">
               <div className="sticky top-[74px] rounded-lg border border-white p-4 shadow-solid-4  transition-all  dark:border-strokedark dark:bg-blacksection">
+                /*{" "}
                 <ul className="space-y-2">
                   <SidebarLink />
                 </ul>
+                /*{" "}
               </div>
-            </div>
+            </div> */}
 
             <div className="w-full px-4 lg:w-3/4">
               <div className="blog-details blog-details-docs shadow-three dark:bg-gray-dark rounded-sm bg-white px-8 py-11 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]">
-                <h1>Welcome to Startup Documentation</h1>
+                <h1>Who We Are</h1>
 
                 <p className="text-body-color dark:text-body-color-dark text-base">
-                  This document serves as a simple template to showcase a sample
-                  layout and format. It is solely created for demonstration
-                  purposes and is not intended for any official use.
+                  Krv Analytics empowers businesses to harness the power of
+                  their data. Our solutions simplify high-dimensional, sparse
+                  datasets, enabling domain experts to see into the black box of
+                  machine learning.
                 </p>
+
+                <h1>What We Do</h1>
+
                 <p className="text-body-color dark:text-body-color-dark text-base">
+                  We enable users to analyze and strategize without the need for
+                  advanced ML infrastructure or technical expertise. Our tool
+                  seamlessly integrates tabular data (e.g. CSV files) into a
+                  knowledge base, offering visual insights, local metrics,
+                  optimized queries, and an instant connection between a
+                  customer’s documents and their datasets.
+                </p>
+
+                <h1>Why It Matters</h1>
+
+                <p className="text-body-color dark:text-body-color-dark text-base">
+                  We make data-driven decision-making accessible to mid-sized
+                  companies, empowering them to act on their data without
+                  relying on large data teams, long histories of cultivated
+                  datasets, and deep technical expertise.
+                </p>
+                {/* <p className="text-body-color dark:text-body-color-dark text-base">
                   Please visit:{" "}
                   <b>
                     <a href="https://nextjstemplates.com/docs">
@@ -39,7 +62,7 @@ export default function DocsPage() {
                   </b>{" "}
                   to check out the real docs, setup guide and even video
                   instructions
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
