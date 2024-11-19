@@ -27,7 +27,7 @@ const Hero = () => {
               </h1>
               <p>
                 Gain new insights from fresh perspectives. Ride the wave of AI
-                innovation and elevate your company's analytics securly to new
+                innovation and elevate your company's analytics securely to new
                 heights.
               </p>
 
