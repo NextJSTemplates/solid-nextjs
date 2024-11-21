@@ -170,7 +170,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="/contact"
+                        href="/about"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         About
