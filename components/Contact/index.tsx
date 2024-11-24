@@ -180,7 +180,7 @@ const Contact = () => {
 
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Our Loaction
+                  Our Location
                 </h3>
                 <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
               </div>
