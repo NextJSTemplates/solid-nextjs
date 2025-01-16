@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.4",
     "@types/bcrypt": "^5.0.1",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.32",
     "@types/react-dom": "^18.2.14",
@@ -17,7 +21,9 @@
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "framer-motion": "^10.12.16",
+    "gray-matter": "^4.0.3",
     "next": "^13.5.6",
+    "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
