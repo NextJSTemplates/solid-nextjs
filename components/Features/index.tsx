@@ -15,7 +15,7 @@ const Feature = () => {
             headerInfo={{
               title: "SAHAAI FEATURES",
               subtitle: "Core Features of Sahaai",
-              description: `Automate your workflows like scheduling tasks, managing crypto, managing finance all at one place`,
+              description: `Automate your workflows like programming , managing crypto, planning travel all at one place`,
             }}
           />
           {/* <!-- Section Title End --> */}

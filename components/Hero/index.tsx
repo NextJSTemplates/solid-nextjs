@@ -29,10 +29,9 @@ const Hero = () => {
                 </span>
               </h1>
               <p>
-                Solid Pro - Packed with all the key integrations you need for
-                swift SaaS startup launch, including - Auth, Database, Sanity
-                Blog, Essential Components, Pages and More. Built-winth -
-                Next.js 13, React 18 and TypeScript.
+                Sahaai - Agentic workflows are the future and with Sahaai users
+                can now automate their tasks and developers can monetize their
+                workflows like Crypto , Travel , Programming, shopping.
               </p>
 
               <div className="mt-10">
