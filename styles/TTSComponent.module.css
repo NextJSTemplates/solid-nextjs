@@ -1,0 +1,106 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.canvas {
+  display: block;
+  margin: 1em auto;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #005bb5;
+}
+
+.audioContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.audioTitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.audioPlayer {
+  width: 100%;
+}
+
+
+.canvasWrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.micButton {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.micButton:focus {
+  outline: none;
+}
+
+
+.canvasWrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+
+.micButton:hover {
+  color: #0070f3;
+}
+
+

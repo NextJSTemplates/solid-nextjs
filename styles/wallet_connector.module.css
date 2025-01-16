@@ -1,0 +1,17 @@
+/* Base styles for the link */
+.styledlink {
+    font-size: 20px;         /* Larger font size */
+    font-weight: bold;       /* Bold text */
+    color: #1585fd;          /* Initial link color */
+    text-decoration: none;  
+    font:bolder;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .styledlink:hover {
+    color: #ff4500;          /* Change to orange on hover */
+    text-decoration: underline;  /* Underline on hover */
+    font-size: 22px;         /* Slightly larger on hover */
+  }
+  

@@ -1,0 +1,636 @@
+{
+  "address": "0x410cf11Ce56B1D1E07e8D8EE62A3Eb2D5aBFcb8D",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_basicPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_proPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_enterprisePrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_subscriptionDuration",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "oldPlan",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "newPlan",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        }
+      ],
+      "name": "PlanDowngraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "oldPlan",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "newPlan",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        }
+      ],
+      "name": "PlanUpgraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "basicPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "proPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "enterprisePrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "PriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "plan",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        }
+      ],
+      "name": "Subscribed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "Unsubscribed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "activeSubscriptions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "planId",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "basicPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "enterprisePrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "_plan",
+          "type": "uint8"
+        }
+      ],
+      "name": "getPlanPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "issUserSubscribed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "proPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_basicPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_proPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_enterprisePrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPrices",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_duration",
+          "type": "uint256"
+        }
+      ],
+      "name": "setSubscriptionDuration",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "_plan",
+          "type": "uint8"
+        }
+      ],
+      "name": "subscribe",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "subscriptionDuration",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unsubscribe",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum SubscriptionManager.Plan",
+          "name": "_newPlan",
+          "type": "uint8"
+        }
+      ],
+      "name": "upgradePlan",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawFunds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x564f3e889ec4d3d5d9e34731f57676b77ad410e31526e622553c16039ee2f28d",
+  "receipt": {
+    "to": null,
+    "from": "0x1018156dF390667aA90147a2Bbb993c3833ECea7",
+    "contractAddress": "0x410cf11Ce56B1D1E07e8D8EE62A3Eb2D5aBFcb8D",
+    "transactionIndex": 88,
+    "gasUsed": "820664",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000004000000000001000000000000000000000000000000000000020000000000000000000800000008000000000000000000000000400000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000004000000000",
+    "blockHash": "0x7fb41d294420549445addfb08bc7222af480696b5f55e77e63a98805dd96b6a7",
+    "transactionHash": "0x564f3e889ec4d3d5d9e34731f57676b77ad410e31526e622553c16039ee2f28d",
+    "logs": [
+      {
+        "transactionIndex": 88,
+        "blockNumber": 24123423,
+        "transactionHash": "0x564f3e889ec4d3d5d9e34731f57676b77ad410e31526e622553c16039ee2f28d",
+        "address": "0x410cf11Ce56B1D1E07e8D8EE62A3Eb2D5aBFcb8D",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000001018156df390667aa90147a2bbb993c3833ecea7"
+        ],
+        "data": "0x",
+        "logIndex": 251,
+        "blockHash": "0x7fb41d294420549445addfb08bc7222af480696b5f55e77e63a98805dd96b6a7"
+      }
+    ],
+    "blockNumber": 24123423,
+    "cumulativeGasUsed": "18643661",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "1000000000000000",
+    "5000000000000000",
+    "15000000000000000",
+    "2600000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "49b54c9ab5ed992afb5ed41c2183fcb9",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_basicPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_proPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_enterprisePrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_subscriptionDuration\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FundsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"oldPlan\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"newPlan\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"}],\"name\":\"PlanDowngraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"oldPlan\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"newPlan\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"}],\"name\":\"PlanUpgraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"basicPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"proPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"enterprisePrice\",\"type\":\"uint256\"}],\"name\":\"PriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"plan\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"}],\"name\":\"Subscribed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"Unsubscribed\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"activeSubscriptions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"},{\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"planId\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"basicPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"enterprisePrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"_plan\",\"type\":\"uint8\"}],\"name\":\"getPlanPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"issUserSubscribed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"proPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_basicPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_proPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_enterprisePrice\",\"type\":\"uint256\"}],\"name\":\"setPrices\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"setSubscriptionDuration\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"_plan\",\"type\":\"uint8\"}],\"name\":\"subscribe\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"subscriptionDuration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unsubscribe\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum SubscriptionManager.Plan\",\"name\":\"_newPlan\",\"type\":\"uint8\"}],\"name\":\"upgradePlan\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdrawFunds\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}]},\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/SubscriptionManager.sol\":\"SubscriptionManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"contracts/SubscriptionManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\n\\ncontract SubscriptionManager is Ownable {\\n    enum Plan {\\n        Basic,\\n        Pro,\\n        Enterprise\\n    }\\n\\n    uint256 public basicPrice;\\n    uint256 public proPrice;\\n    uint256 public enterprisePrice;\\n    uint256 public subscriptionDuration;\\n\\n    struct Subscription {\\n        uint256 expiry; // Timestamp of subscription expiry\\n        Plan planId;\\n        bool active; // Subscription plan ID\\n    }\\n\\n    mapping(address => Subscription) public activeSubscriptions; // Tracks active subscriptions for each user\\n    event FundsWithdrawn(address indexed owner, uint256 amount);\\n    event Subscribed(address indexed user, Plan plan, uint256 expiry);\\n    event PlanUpgraded(\\n        address indexed user,\\n        Plan oldPlan,\\n        Plan newPlan,\\n        uint256 expiry\\n    );\\n    event PlanDowngraded(\\n        address indexed user,\\n        Plan oldPlan,\\n        Plan newPlan,\\n        uint256 expiry\\n    );\\n    event Unsubscribed(address indexed user);\\n    event PriceUpdated(\\n        uint256 basicPrice,\\n        uint256 proPrice,\\n        uint256 enterprisePrice\\n    );\\n\\n    constructor(\\n        uint256 _basicPrice,\\n        uint256 _proPrice,\\n        uint256 _enterprisePrice,\\n        uint256 _subscriptionDuration\\n    ) Ownable(msg.sender) {\\n        basicPrice = _basicPrice;\\n        proPrice = _proPrice;\\n        enterprisePrice = _enterprisePrice;\\n        subscriptionDuration = _subscriptionDuration;\\n    }\\n\\n    modifier isSubscribed(address user) {\\n        require(\\n            activeSubscriptions[user].expiry > block.timestamp,\\n            \\\"Err:sub-expired\\\"\\n        );\\n        _;\\n    }\\n\\n    function subscribe(Plan _plan) external payable {\\n        uint256 price = getPlanPrice(_plan);\\n        require(msg.value == price, \\\"Err:Sub-fee\\\");\\n\\n        uint256 newExpiry = block.timestamp + subscriptionDuration;\\n\\n        if (activeSubscriptions[msg.sender].expiry < block.timestamp) {\\n            activeSubscriptions[msg.sender].planId = _plan;\\n        } else {\\n            require(\\n                newExpiry > activeSubscriptions[msg.sender].expiry,\\n                \\\"Err:Expiry overflow\\\"\\n            );\\n        }\\n\\n        activeSubscriptions[msg.sender].expiry = newExpiry;\\n        activeSubscriptions[msg.sender].active = true;\\n        emit Subscribed(msg.sender, _plan, newExpiry);\\n    }\\n\\n    function upgradePlan(\\n        Plan _newPlan\\n    ) external payable isSubscribed(msg.sender) {\\n        Plan currentPlan = activeSubscriptions[msg.sender].planId;\\n        require(_newPlan > currentPlan, \\\"Err: upgrade-onlyHigh\\\");\\n\\n        uint256 additionalCost = getPlanPrice(_newPlan) -\\n            getPlanPrice(currentPlan);\\n        require(msg.value == additionalCost, \\\"Err:Upgrade-incorrect value\\\");\\n\\n        activeSubscriptions[msg.sender].planId = _newPlan;\\n        uint256 newExpiry = activeSubscriptions[msg.sender].expiry +\\n            subscriptionDuration;\\n        require(\\n            newExpiry > activeSubscriptions[msg.sender].expiry,\\n            \\\"Err:Expiry overflow\\\"\\n        );\\n\\n        activeSubscriptions[msg.sender].expiry = newExpiry;\\n        activeSubscriptions[msg.sender].active = true;\\n\\n        emit PlanUpgraded(\\n            msg.sender,\\n            currentPlan,\\n            _newPlan,\\n            activeSubscriptions[msg.sender].expiry\\n        );\\n    }\\n\\n    function unsubscribe() external isSubscribed(msg.sender) {\\n        activeSubscriptions[msg.sender].active = false;\\n        emit Unsubscribed(msg.sender);\\n    }\\n\\n    function getPlanPrice(Plan _plan) public view returns (uint256) {\\n        if (_plan == Plan.Basic) return basicPrice;\\n        if (_plan == Plan.Pro) return proPrice;\\n        if (_plan == Plan.Enterprise) return enterprisePrice;\\n        revert(\\\"Invalid plan\\\");\\n    }\\n\\n    function setPrices(\\n        uint256 _basicPrice,\\n        uint256 _proPrice,\\n        uint256 _enterprisePrice\\n    ) external onlyOwner {\\n        basicPrice = _basicPrice;\\n        proPrice = _proPrice;\\n        enterprisePrice = _enterprisePrice;\\n        emit PriceUpdated(_basicPrice, _proPrice, _enterprisePrice);\\n    }\\n\\n    function setSubscriptionDuration(uint256 _duration) external onlyOwner {\\n        subscriptionDuration = _duration;\\n    }\\n\\n    function issUserSubscribed(address user) external view returns (bool) {\\n        return activeSubscriptions[user].expiry > block.timestamp;\\n    }\\n\\n    function withdrawFunds(uint256 amount) external onlyOwner {\\n        require(\\n            address(this).balance >= amount,\\n            \\\"Insufficient contract balance\\\"\\n        );\\n        payable(owner()).transfer(amount);\\n        emit FundsWithdrawn(owner(), amount);\\n    }\\n}\\n\",\"keccak256\":\"0xc0b15dd3596d2e16ea431dd5dd7e2c20bb6e7253c6871adca5a6b87a2e1cfb51\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610ccf380380610ccf83398101604081905261002f916100c6565b338061005557604051631e4fbdf760e01b81526000600482015260240160405180910390fd5b61005e81610076565b506001939093556002919091556003556004556100fc565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600080600080608085870312156100dc57600080fd5b505082516020840151604085015160609095015191969095509092509050565b610bc48061010b6000396000f3fe6080604052600436106100f35760003560e01c80638da5cb5b1161008a578063db9191dd11610059578063db9191dd146102b3578063f2fde38b146102c9578063fcae4484146102e9578063fdd5d01d146102fe57600080fd5b80638da5cb5b146101fc578063a88fe42d14610224578063ca1140f914610244578063cac3c4d21461029357600080fd5b806362aaa325116100c657806362aaa3251461019e57806364760b6f146101b1578063715018a6146101d15780637a94a633146101e657600080fd5b80630739ad35146100f8578063155dd5ee1461014557806349c7e6391461016757806353b0e17d1461017a575b600080fd5b34801561010457600080fd5b50610130610113366004610a16565b6001600160a01b0316600090815260056020526040902054421090565b60405190151581526020015b60405180910390f35b34801561015157600080fd5b50610165610160366004610a46565b610314565b005b610165610175366004610a5f565b6103fc565b34801561018657600080fd5b5061019060025481565b60405190815260200161013c565b6101656101ac366004610a5f565b610560565b3480156101bd57600080fd5b506101906101cc366004610a5f565b6107ae565b3480156101dd57600080fd5b50610165610849565b3480156101f257600080fd5b5061019060045481565b34801561020857600080fd5b506000546040516001600160a01b03909116815260200161013c565b34801561023057600080fd5b5061016561023f366004610a80565b61085d565b34801561025057600080fd5b5061028461025f366004610a16565b6005602052600090815260409020805460019091015460ff8082169161010090041683565b60405161013c93929190610ae4565b34801561029f57600080fd5b506101656102ae366004610a46565b6108ba565b3480156102bf57600080fd5b5061019060015481565b3480156102d557600080fd5b506101656102e4366004610a16565b6108c7565b3480156102f557600080fd5b50610165610905565b34801561030a57600080fd5b5061019060035481565b61031c610999565b804710156103715760405162461bcd60e51b815260206004820152601d60248201527f496e73756666696369656e7420636f6e74726163742062616c616e636500000060448201526064015b60405180910390fd5b600080546040516001600160a01b039091169183156108fc02918491818181858888f193505050501580156103aa573d6000803e3d6000fd5b506000546001600160a01b03166001600160a01b03167feaff4b37086828766ad3268786972c0cd24259d4c87a80f9d3963a3c3d999b0d826040516103f191815260200190565b60405180910390a250565b6000610407826107ae565b90508034146104465760405162461bcd60e51b815260206004820152600b60248201526a4572723a5375622d66656560a81b6044820152606401610368565b6000600454426104569190610b1e565b336000908152600560205260409020549091504211156104ab5733600090815260056020526040902060019081018054859260ff19909116908360028111156104a1576104a1610aac565b02179055506104ff565b3360009081526005602052604090205481116104ff5760405162461bcd60e51b81526020600482015260136024820152724572723a457870697279206f766572666c6f7760681b6044820152606401610368565b3360008181526005602052604090819020838155600101805461ff001916610100179055517f044f95a2d17727b5b87e4f23d70278b59a2b0b285289cc9021cac8cdba4797b7906105539086908590610b37565b60405180910390a2505050565b3360008181526005602052604090205442106105b05760405162461bcd60e51b815260206004820152600f60248201526e115c9c8e9cdd588b595e1c1a5c9959608a1b6044820152606401610368565b3360009081526005602052604090206001015460ff168060028111156105d8576105d8610aac565b8360028111156105ea576105ea610aac565b1161062f5760405162461bcd60e51b815260206004820152601560248201527408ae4e47440eae0cee4c2c8ca5adedcd8f290d2ced605b1b6044820152606401610368565b600061063a826107ae565b610643856107ae565b61064d9190610b52565b905080341461069e5760405162461bcd60e51b815260206004820152601b60248201527f4572723a557067726164652d696e636f72726563742076616c756500000000006044820152606401610368565b33600090815260056020526040902060019081018054869260ff19909116908360028111156106cf576106cf610aac565b02179055506004543360009081526005602052604081205490916106f291610b1e565b3360009081526005602052604090205490915081116107495760405162461bcd60e51b81526020600482015260136024820152724572723a457870697279206f766572666c6f7760681b6044820152606401610368565b3360008181526005602052604090819020838155600101805461ff001916610100179055517fd2c1d3b2cacc52d0b8d1de6b5eb789780c85c7c626bde0fbb2d30ec696b153f59061079f90869089908690610b65565b60405180910390a25050505050565b6000808260028111156107c3576107c3610aac565b036107d057505060015490565b60018260028111156107e4576107e4610aac565b036107f157505060025490565b600282600281111561080557610805610aac565b0361081257505060035490565b60405162461bcd60e51b815260206004820152600c60248201526b24b73b30b634b210383630b760a11b6044820152606401610368565b610851610999565b61085b60006109c6565b565b610865610999565b60018390556002829055600381905560408051848152602081018490529081018290527f15819dd2fd9f6418b142e798d08a18d0bf06ea368f4480b7b0d3f75bd966bc489060600160405180910390a1505050565b6108c2610999565b600455565b6108cf610999565b6001600160a01b0381166108f957604051631e4fbdf760e01b815260006004820152602401610368565b610902816109c6565b50565b3360008181526005602052604090205442106109555760405162461bcd60e51b815260206004820152600f60248201526e115c9c8e9cdd588b595e1c1a5c9959608a1b6044820152606401610368565b33600081815260056020526040808220600101805461ff0019169055517fae563681ccc696fae58fe830f401bc9c043a43ddb9f7c2830b32c3c70d9966e79190a250565b6000546001600160a01b0316331461085b5760405163118cdaa760e01b8152336004820152602401610368565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600060208284031215610a2857600080fd5b81356001600160a01b0381168114610a3f57600080fd5b9392505050565b600060208284031215610a5857600080fd5b5035919050565b600060208284031215610a7157600080fd5b813560038110610a3f57600080fd5b600080600060608486031215610a9557600080fd5b505081359360208301359350604090920135919050565b634e487b7160e01b600052602160045260246000fd5b60038110610ae057634e487b7160e01b600052602160045260246000fd5b9052565b83815260608101610af86020830185610ac2565b8215156040830152949350505050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610b3157610b31610b08565b92915050565b60408101610b458285610ac2565b8260208301529392505050565b81810381811115610b3157610b31610b08565b60608101610b738286610ac2565b610b806020830185610ac2565b82604083015294935050505056fea2646970667358221220d26b8e99db3b2a6810285f24b1c89de28fa0033355a5574d94b51a41313bdd4864736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100f35760003560e01c80638da5cb5b1161008a578063db9191dd11610059578063db9191dd146102b3578063f2fde38b146102c9578063fcae4484146102e9578063fdd5d01d146102fe57600080fd5b80638da5cb5b146101fc578063a88fe42d14610224578063ca1140f914610244578063cac3c4d21461029357600080fd5b806362aaa325116100c657806362aaa3251461019e57806364760b6f146101b1578063715018a6146101d15780637a94a633146101e657600080fd5b80630739ad35146100f8578063155dd5ee1461014557806349c7e6391461016757806353b0e17d1461017a575b600080fd5b34801561010457600080fd5b50610130610113366004610a16565b6001600160a01b0316600090815260056020526040902054421090565b60405190151581526020015b60405180910390f35b34801561015157600080fd5b50610165610160366004610a46565b610314565b005b610165610175366004610a5f565b6103fc565b34801561018657600080fd5b5061019060025481565b60405190815260200161013c565b6101656101ac366004610a5f565b610560565b3480156101bd57600080fd5b506101906101cc366004610a5f565b6107ae565b3480156101dd57600080fd5b50610165610849565b3480156101f257600080fd5b5061019060045481565b34801561020857600080fd5b506000546040516001600160a01b03909116815260200161013c565b34801561023057600080fd5b5061016561023f366004610a80565b61085d565b34801561025057600080fd5b5061028461025f366004610a16565b6005602052600090815260409020805460019091015460ff8082169161010090041683565b60405161013c93929190610ae4565b34801561029f57600080fd5b506101656102ae366004610a46565b6108ba565b3480156102bf57600080fd5b5061019060015481565b3480156102d557600080fd5b506101656102e4366004610a16565b6108c7565b3480156102f557600080fd5b50610165610905565b34801561030a57600080fd5b5061019060035481565b61031c610999565b804710156103715760405162461bcd60e51b815260206004820152601d60248201527f496e73756666696369656e7420636f6e74726163742062616c616e636500000060448201526064015b60405180910390fd5b600080546040516001600160a01b039091169183156108fc02918491818181858888f193505050501580156103aa573d6000803e3d6000fd5b506000546001600160a01b03166001600160a01b03167feaff4b37086828766ad3268786972c0cd24259d4c87a80f9d3963a3c3d999b0d826040516103f191815260200190565b60405180910390a250565b6000610407826107ae565b90508034146104465760405162461bcd60e51b815260206004820152600b60248201526a4572723a5375622d66656560a81b6044820152606401610368565b6000600454426104569190610b1e565b336000908152600560205260409020549091504211156104ab5733600090815260056020526040902060019081018054859260ff19909116908360028111156104a1576104a1610aac565b02179055506104ff565b3360009081526005602052604090205481116104ff5760405162461bcd60e51b81526020600482015260136024820152724572723a457870697279206f766572666c6f7760681b6044820152606401610368565b3360008181526005602052604090819020838155600101805461ff001916610100179055517f044f95a2d17727b5b87e4f23d70278b59a2b0b285289cc9021cac8cdba4797b7906105539086908590610b37565b60405180910390a2505050565b3360008181526005602052604090205442106105b05760405162461bcd60e51b815260206004820152600f60248201526e115c9c8e9cdd588b595e1c1a5c9959608a1b6044820152606401610368565b3360009081526005602052604090206001015460ff168060028111156105d8576105d8610aac565b8360028111156105ea576105ea610aac565b1161062f5760405162461bcd60e51b815260206004820152601560248201527408ae4e47440eae0cee4c2c8ca5adedcd8f290d2ced605b1b6044820152606401610368565b600061063a826107ae565b610643856107ae565b61064d9190610b52565b905080341461069e5760405162461bcd60e51b815260206004820152601b60248201527f4572723a557067726164652d696e636f72726563742076616c756500000000006044820152606401610368565b33600090815260056020526040902060019081018054869260ff19909116908360028111156106cf576106cf610aac565b02179055506004543360009081526005602052604081205490916106f291610b1e565b3360009081526005602052604090205490915081116107495760405162461bcd60e51b81526020600482015260136024820152724572723a457870697279206f766572666c6f7760681b6044820152606401610368565b3360008181526005602052604090819020838155600101805461ff001916610100179055517fd2c1d3b2cacc52d0b8d1de6b5eb789780c85c7c626bde0fbb2d30ec696b153f59061079f90869089908690610b65565b60405180910390a25050505050565b6000808260028111156107c3576107c3610aac565b036107d057505060015490565b60018260028111156107e4576107e4610aac565b036107f157505060025490565b600282600281111561080557610805610aac565b0361081257505060035490565b60405162461bcd60e51b815260206004820152600c60248201526b24b73b30b634b210383630b760a11b6044820152606401610368565b610851610999565b61085b60006109c6565b565b610865610999565b60018390556002829055600381905560408051848152602081018490529081018290527f15819dd2fd9f6418b142e798d08a18d0bf06ea368f4480b7b0d3f75bd966bc489060600160405180910390a1505050565b6108c2610999565b600455565b6108cf610999565b6001600160a01b0381166108f957604051631e4fbdf760e01b815260006004820152602401610368565b610902816109c6565b50565b3360008181526005602052604090205442106109555760405162461bcd60e51b815260206004820152600f60248201526e115c9c8e9cdd588b595e1c1a5c9959608a1b6044820152606401610368565b33600081815260056020526040808220600101805461ff0019169055517fae563681ccc696fae58fe830f401bc9c043a43ddb9f7c2830b32c3c70d9966e79190a250565b6000546001600160a01b0316331461085b5760405163118cdaa760e01b8152336004820152602401610368565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600060208284031215610a2857600080fd5b81356001600160a01b0381168114610a3f57600080fd5b9392505050565b600060208284031215610a5857600080fd5b5035919050565b600060208284031215610a7157600080fd5b813560038110610a3f57600080fd5b600080600060608486031215610a9557600080fd5b505081359360208301359350604090920135919050565b634e487b7160e01b600052602160045260246000fd5b60038110610ae057634e487b7160e01b600052602160045260246000fd5b9052565b83815260608101610af86020830185610ac2565b8215156040830152949350505050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610b3157610b31610b08565b92915050565b60408101610b458285610ac2565b8260208301529392505050565b81810381811115610b3157610b31610b08565b60608101610b738286610ac2565b610b806020830185610ac2565b82604083015294935050505056fea2646970667358221220d26b8e99db3b2a6810285f24b1c89de28fa0033355a5574d94b51a41313bdd4864736f6c63430008140033",
+  "devdoc": {
+    "errors": {
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 188,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "basicPrice",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 190,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "proPrice",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 192,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "enterprisePrice",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 194,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "subscriptionDuration",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 207,
+        "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+        "label": "activeSubscriptions",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_struct(Subscription)202_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_enum(Plan)186": {
+        "encoding": "inplace",
+        "label": "enum SubscriptionManager.Plan",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_struct(Subscription)202_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct SubscriptionManager.Subscription)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Subscription)202_storage"
+      },
+      "t_struct(Subscription)202_storage": {
+        "encoding": "inplace",
+        "label": "struct SubscriptionManager.Subscription",
+        "members": [
+          {
+            "astId": 196,
+            "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+            "label": "expiry",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 199,
+            "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+            "label": "planId",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_enum(Plan)186"
+          },
+          {
+            "astId": 201,
+            "contract": "contracts/SubscriptionManager.sol:SubscriptionManager",
+            "label": "active",
+            "offset": 1,
+            "slot": "1",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
