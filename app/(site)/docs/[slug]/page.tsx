@@ -9,12 +9,11 @@ export const metadata: Metadata = {
   title: "Docs Page",
   description: "This is Docs page for Sahaai",
 };
-type PageProps = Promise<{
-  params: {
+interface PageProps {
+  params: Promise<{
     slug: string;
-    [key: string]: any;
-  };
-}>;
+  }>;
+}
 const DocsPage = async (props: PageProps) => {
   const _props = await props;
 
