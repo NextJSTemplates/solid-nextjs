@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { signIn } from "../../auth";
+import { SignIn } from "./resend";
 const Hero = () => {
   const [email, setEmail] = useState("");
 
@@ -33,35 +35,9 @@ const Hero = () => {
                 can now automate their tasks and developers can monetize their
                 workflows like Crypto , Travel , Programming, shopping.
               </p>
-
-              <div className="mt-10">
-                <form onSubmit={handleSubmit}>
-                  <div className="flex flex-wrap gap-5">
-                    <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      type="text"
-                      placeholder="Enter your email address"
-                      className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
-                    />
-                    <button
-                      aria-label="get started button"
-                      className="flex rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
-                      onClick={() => {
-                        toast.success("signing up");
-                      }}
-                    >
-                      Get Started
-                    </button>
-                    <Toaster />
-                  </div>
-                </form>
-
-                <p className="mt-5 text-black dark:text-white">
-                  Try for free no credit card required.
-                </p>
-              </div>
             </div>
+            <SignIn />
+            <Toaster />
 
             <div className="animate_right hidden md:w-1/2 lg:block">
               <div className="relative 2xl:-mr-7.5">

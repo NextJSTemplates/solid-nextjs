@@ -2,18 +2,82 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { validateEmail } from "../../lib/utils";
+import toast, { Toaster } from "react-hot-toast";
+import { signIn } from "next-auth/react";
+type Data = {
+  email: string;
+  password: string;
+};
 const Signin = () => {
-  const [data, setData] = useState({
+  const [data, setData] = useState<Data>({
     email: "",
     password: "",
   });
 
+  const handleGoogleSignup = async () => {
+    try {
+      await signIn("google"); // Redirect to home after successful signup
+    } catch (error) {
+      console.error("Google OAuth error:", error);
+      toast.error("Google signup failed.");
+    } finally {
+    }
+  };
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    validate();
+    const email = data.email;
+    const password = data.password;
+    const toastId = toast.loading("signing up....");
+    console.log("signing up..");
+    /*  const res = await fetch("/api/user/signin", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });*/
+    toast.dismiss(toastId);
+    let res = await signIn("credentials", {
+      email,
+      password,
+      callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}`,
+      redirect: false,
+    });
+
+    if (res?.ok) {
+      // toast success
+      console.log("success");
+      toast.success("signin successful");
+      return;
+    } else {
+      // Toast failed
+      toast.error("Failed! Check you input and try again.");
+      // return;
+      console.log("Failed", res);
+    }
+    return res;
+  }
+  function validate() {
+    let emailIsValid = validateEmail(data.email);
+
+    if (!emailIsValid) {
+      toast.error("invalid email");
+      return;
+    }
+    if (data.password.length < 6) {
+      toast.error("password length must be atleast 6 characters");
+      return;
+    }
+  }
   return (
     <>
       {/* <!-- ===== SignIn Form Start ===== --> */}
       <section className="pb-12.5 pt-32.5 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+        <Toaster position="bottom-center" />
         <div className="relative z-1 mx-auto max-w-c-1016 px-7.5 pb-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
           <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
           <div className="absolute bottom-17.5 left-0 -z-1 h-1/3 w-full">
@@ -57,6 +121,7 @@ const Signin = () => {
                 <button
                   aria-label="sign with google"
                   className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                  onClick={() => signIn("google")}
                 >
                   <span className="mr-3">
                     <svg
@@ -97,6 +162,9 @@ const Signin = () => {
                 <button
                   aria-label="signup with github"
                   className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                  onClick={() => {
+                    signIn("github");
+                  }}
                 >
                   <span className="mr-3">
                     <svg
@@ -152,7 +220,7 @@ const Signin = () => {
                       type="checkbox"
                       className="peer sr-only"
                     />
-                    <span className="border-gray-300 bg-gray-100 text-blue-600 dark:border-gray-600 dark:bg-gray-700 group mt-1 flex h-5 min-w-[20px] items-center justify-center rounded peer-checked:bg-primary">
+                    <span className="group mt-1 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary dark:border-gray-600 dark:bg-gray-700">
                       <svg
                         className="opacity-0 peer-checked:group-[]:opacity-100"
                         width="10"
@@ -185,6 +253,7 @@ const Signin = () => {
                 <button
                   aria-label="login with email and password"
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+                  onClick={handleSubmit}
                 >
                   Log in
                   <svg

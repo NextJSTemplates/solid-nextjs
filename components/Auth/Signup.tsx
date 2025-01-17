@@ -3,19 +3,86 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { validateEmail } from "../../lib/utils";
+import { redirect, useRouter } from "next/navigation";
 
+type Data = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
 const Signup = () => {
-  const [data, setData] = useState({
+  const [data, setData] = useState<Data>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
+  const router = useRouter();
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault();
+      validate();
+      const name = data.firstName + data.lastName;
+      const email = data.email;
+      const password = data.password;
+      let userData = {
+        name,
+        email,
+        password,
+      };
+      const toastId = toast.loading("signing up....");
+      console.log("signing up..");
+      // Make call to backend to create user
+      const res = await fetch("/api/user/signup", {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      toast.dismiss(toastId);
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        toast.success("user registered successfully");
+        router.push("/");
+
+        // redirect("/auth/signin");
+        // registration success
+      } else {
+        //registration faled
+        toast.error("user registration failed" + JSON.stringify(res.text()));
+      }
+    } catch (e) {
+      console.log("error", e);
+    }
+  }
+  const handleRedirect = () => {
+    console.log("Redirecting to /dashboard...");
+    router.push("/");
+    //redirect("/auth/signin")
+  };
+
+  function validate() {
+    let emailIsValid = validateEmail(data.email);
+
+    if (!emailIsValid) {
+      toast.error("invalid email");
+      return;
+    }
+    if (data.password.length < 6) {
+      toast.error("password length must be atleast 6 characters");
+    }
+  }
 
   return (
     <>
       {/* <!-- ===== SignUp Form Start ===== --> */}
       <section className="pb-12.5 pt-32.5 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+        <Toaster position="bottom-center" />
         <div className="relative z-1 mx-auto max-w-c-1016 px-7.5 pb-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
           <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
           <div className="absolute bottom-17.5 left-0 -z-1 h-1/3 w-full">
@@ -123,7 +190,7 @@ const Signup = () => {
               <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
             </div>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-7.5 flex flex-col gap-7.5 lg:mb-12.5 lg:flex-row lg:justify-between lg:gap-14">
                 <input
                   name="firstName"
@@ -179,7 +246,7 @@ const Signup = () => {
                     type="checkbox"
                     className="peer sr-only"
                   />
-                  <span className="border-gray-300 bg-gray-100 text-blue-600 dark:border-gray-600 dark:bg-gray-700 group mt-1 flex h-5 min-w-[20px] items-center justify-center rounded peer-checked:bg-primary">
+                  <span className="group mt-1 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary dark:border-gray-600 dark:bg-gray-700">
                     <svg
                       className="opacity-0 peer-checked:group-[]:opacity-100"
                       width="10"
@@ -207,6 +274,7 @@ const Signup = () => {
                 <button
                   aria-label="signup with email and password"
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+                  type="submit"
                 >
                   Create Account
                   <svg

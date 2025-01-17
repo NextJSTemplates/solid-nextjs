@@ -25,11 +25,14 @@
     ],
     "paths": {
       "@/*": [
-        "./*",
+        "./*"
       ],
-      "react": [ "./node_modules/@types/react" ]
+      "react": [
+        "./node_modules/@types/react"
+      ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -41,4 +44,3 @@
     "node_modules"
   ]
 }
- 

@@ -521,7 +521,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
           onMouseUp={handleMouseUp}
           onClick={handleTap}
         >
-          <img src="/pngwing.com.png" alt="S" className={styles.icon} />
+          <img src="sahaai_logo.png" alt="S" className={styles.icon} />
         </div>
         {chatResponse && chatResponse !== "" && (
           <div className={styles.resultBox}>
