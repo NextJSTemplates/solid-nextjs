@@ -13,35 +13,34 @@ const neon = new Pool({
 })
 const adapter = new PrismaNeon(neon)
 const prisma = new PrismaClient({ adapter })
-const passwordAuth = Credentials({
-    id: "credentials",
-    name: "Credentials",
-    async authorize(credentials, req) {
-        const userCredentials = {
-            email: credentials.email,
-            password: credentials.password,
-        };
-
-        const res = await fetch(
-            `/api/user/signin`,
-            {
-                method: "POST",
-                body: JSON.stringify(userCredentials),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-        const user = await res.json();
-
-        if (res.ok && user) {
-            return user;
-        } else {
-            return null;
-        }
-    },
-});
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
-    providers: [Resend, Google, Github, passwordAuth],
+    providers: [Resend, Google, Github, Credentials({
+        id: "credentials",
+        name: "Credentials",
+        async authorize(credentials, req) {
+            const userCredentials = {
+                email: credentials.email,
+                password: credentials.password,
+            };
+
+            const res = await fetch(
+                `${process.env.AUTH_URL}/api/user/signin`,
+                {
+                    method: "POST",
+                    body: JSON.stringify(userCredentials),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            const user = await res.json();
+
+            if (res.ok && user) {
+                return user;
+            } else {
+                return null;
+            }
+        },
+    })],
 })

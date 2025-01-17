@@ -12,11 +12,14 @@ export const metadata: Metadata = {
 type PageProps = Promise<{
   params: {
     slug: string;
+    [key: string]: any;
   };
 }>;
-const DocsPage = async (props: { params: PageProps }) => {
-  const { slug } = (await props.params).params;
+const DocsPage = async (props: PageProps) => {
+  const _props = await props;
 
+  const { slug } = await _props.params;
+  console.log(slug);
   // Path to the MDX file based on slug
   const docPath = path.join(process.cwd(), "markdown", "docs", `${slug}.mdx`);
 
