@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Docs Page",
   description: "This is Docs page for Sahaai",
 };
-
-export default async function DocPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+type PageProps = Promise<{
+  params: {
+    slug: string;
+  };
+}>;
+const DocsPage = async (props: { params: PageProps }) => {
+  const { slug } = (await props.params).params;
 
   // Path to the MDX file based on slug
   const docPath = path.join(process.cwd(), "markdown", "docs", `${slug}.mdx`);
@@ -60,4 +60,6 @@ export default async function DocPage({
       </section>
     </>
   );
-}
+};
+
+export default DocsPage;

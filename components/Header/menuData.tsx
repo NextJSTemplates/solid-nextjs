@@ -27,10 +27,16 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Pages",
+    title: "Products",
     newTab: false,
     submenu: [
       {
+        id: 31,
+        title: "Crypto",
+        newTab: false,
+        path: "/crypto",
+      },
+      /* {
         id: 31,
         title: "Blog Grid",
         newTab: false,
@@ -65,7 +71,7 @@ const menuData: Menu[] = [
         title: "404",
         newTab: false,
         path: "/error",
-      },
+      },*/
     ],
   },
 

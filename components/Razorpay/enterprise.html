@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Page</title>
+  <style>
+    /* Reset default margins and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-page centering */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f9f9f9; /* Light background color */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Styling the form container */
+    .form-container {
+      background-color: #fff;
+      padding: 20px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Optional heading styling */
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Subscribe to Our Plan</h1>
+    <form>
+      <script
+        src="https://cdn.razorpay.com/static/widget/subscription-button.js"
+        data-subscription_button_id="pl_PkXetiw23mi7OP" 
+        data-button_theme="brand-color"
+        async
+      ></script>
+    </form>
+  </div>
+</body>
+</html>

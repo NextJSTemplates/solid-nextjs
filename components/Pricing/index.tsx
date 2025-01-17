@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import SectionHeader from "../Common/SectionHeader";
+import RazorpayEnterpriseSubscriptionButton from "../Razorpay/enterprise";
 
 const Pricing = () => {
   return (
@@ -118,6 +119,10 @@ const Pricing = () => {
               <button
                 aria-label="Get the Plan button"
                 className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                onClick={() => {
+                  const url = "/paypal-pro.html"; // Replace with your actual HTML file path or URL
+                  window.open(url, "_blank"); // Open in a new tab
+                }}
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Get the Plan
@@ -169,6 +174,10 @@ const Pricing = () => {
               <button
                 aria-label="Get the Plan button"
                 className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                onClick={() => {
+                  const url = "/paypal-enterprise.html"; // Replace with your actual HTML file path or URL
+                  window.open(url, "_blank"); // Open in a new tab
+                }}
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Get the Plan
