@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { validateEmail } from "../../lib/utils";
 import { redirect, useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 type Data = {
   firstName: string;
@@ -14,6 +15,7 @@ type Data = {
   password: string;
 };
 const Signup = () => {
+  const [email, setEmail] = useState("");
   const [data, setData] = useState<Data>({
     firstName: "",
     lastName: "",
@@ -21,7 +23,21 @@ const Signup = () => {
     password: "",
   });
   const router = useRouter();
-  async function handleSubmit(e) {
+  const { data: session } = useSession();
+  console.log("The session is ", session);
+  if (session?.user) {
+    redirect("/dashboard");
+  }
+  const resendAction = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+
+    // Trigger the NextAuth `signIn` function
+    await signIn("resend", { email });
+  };
+  async function _handleSubmit(e) {
     try {
       e.preventDefault();
       validate();
@@ -48,8 +64,7 @@ const Signup = () => {
         const data = await res.json();
         console.log(data);
         toast.success("user registered successfully");
-        router.push("/");
-
+        redirect("/dashboard");
         // redirect("/auth/signin");
         // registration success
       } else {
@@ -126,6 +141,7 @@ const Signup = () => {
               <button
                 aria-label="signup with google"
                 className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                onClick={() => signIn("google", { redirectTo: "/dashboard" })}
               >
                 <span className="mr-3">
                   <svg
@@ -166,6 +182,7 @@ const Signup = () => {
               <button
                 aria-label="signup with github"
                 className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                onClick={() => signIn("github", { redirectTo: "/dashboard" })}
               >
                 <span className="mr-3">
                   <svg
@@ -190,9 +207,9 @@ const Signup = () => {
               <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={resendAction}>
               <div className="mb-7.5 flex flex-col gap-7.5 lg:mb-12.5 lg:flex-row lg:justify-between lg:gap-14">
-                <input
+                {/*<input}
                   name="firstName"
                   type="text"
                   placeholder="First name"
@@ -213,21 +230,23 @@ const Signup = () => {
                   }
                   className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                 />
+               */}
               </div>
 
-              <div className="mb-7.5 flex flex-col gap-7.5 lg:mb-12.5 lg:flex-row lg:justify-between lg:gap-14">
+              <div className="mb-7.5 flex ">
                 <input
                   name="email"
                   type="email"
                   placeholder="Email address"
                   value={data.email}
-                  onChange={(e) =>
-                    setData({ ...data, [e.target.name]: e.target.value })
-                  }
-                  className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                    setEmail(e.target.value);
+                  }}
+                  className="w-full  border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white "
                 />
 
-                <input
+                {/*<input
                   name="password"
                   type="password"
                   placeholder="Password"
@@ -236,7 +255,7 @@ const Signup = () => {
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
                   className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                />
+                />*/}
               </div>
 
               <div className="flex flex-wrap gap-10 md:justify-between xl:gap-15">

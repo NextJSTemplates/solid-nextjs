@@ -22,13 +22,12 @@ async function loginUserHandler(req) {
                 password: true,
             },
         });
-        console.log("the passwords are", user?.password, password, hashPassword(password))
         if (user && await bcrypt.compare(password, user.password ? user.password : "password")) {
             // exclude password from json response
             return new Response(JSON.stringify(exclude(user, ["password"])),
                 { status: 200, headers: { "Content-Type": "application/json" } })
         } else {
-            return new Response(JSON.stringify({ message: String("the passwords are" + user?.password + password + hashPassword(password)) }),
+            return new Response(JSON.stringify({ message: String("invalid Password") }),
                 { status: 401, headers: { "Content-Type": "application/json" } })
         }
     } catch (e) {

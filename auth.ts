@@ -15,7 +15,9 @@ const adapter = new PrismaNeon(neon)
 const prisma = new PrismaClient({ adapter })
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
-    providers: [Resend, Google, Github, Credentials({
+    providers: [Resend({
+        from: "support@sahaaai.com"
+    }), Google, Github, Credentials({
         id: "credentials",
         name: "Credentials",
         async authorize(credentials, req) {
@@ -37,6 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             const user = await res.json();
 
             if (res.ok && user) {
+                console.log("the user is :", user)
                 return user;
             } else {
                 return null;

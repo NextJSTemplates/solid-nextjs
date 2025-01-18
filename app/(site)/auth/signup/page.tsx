@@ -1,5 +1,6 @@
 import Signup from "@/components/Auth/Signup";
 import { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Sign Up Page",

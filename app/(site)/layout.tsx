@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 import ToasterContext from "../context/ToastContext";
 import { Providers } from "./providers";
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
   children,
@@ -25,12 +26,14 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="light"
         >
-          <Lines />
-          <Header />
-          <ToasterContext />
-          <Providers>{children}</Providers>
-          <Footer />
-          <ScrollToTop />
+          <SessionProvider>
+            <Lines />
+            <Header />
+            <ToasterContext />
+            <Providers>{children}</Providers>
+            <Footer />
+            <ScrollToTop />
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>
