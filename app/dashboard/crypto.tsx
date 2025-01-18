@@ -12,7 +12,7 @@ import { AppProps } from "next/app";
 import { useSession } from "next-auth/react";
 import { auth } from "../../auth";
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   console.log("The session is ", session);
 
   const pathname = usePathname();
@@ -23,10 +23,16 @@ export default function Home() {
     console.log(url);
     sendGAEvent("conversion", { page_path: url });
   }, []);
+  useEffect(() => {
+    if (status == "unauthenticated") {
+      redirect("/auth/signin");
+    }
+    console.log(session, status);
+  }, [session]);
   /*if (!session?.user) {
     redirect("/auth/signin");
   }*/
-  if (!session || !session) return <div></div>;
+  if (status == "loading") return <div>loading...</div>;
 
   return (
     <div className="animate_top mx-auto text-center">
