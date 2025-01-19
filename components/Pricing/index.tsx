@@ -68,6 +68,10 @@ const Pricing = () => {
               <button
                 aria-label="Get the Plan button"
                 className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                onClick={() => {
+                  console.log("redirecting to login");
+                  redirect("/auth/signup");
+                }}
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Get the Plan

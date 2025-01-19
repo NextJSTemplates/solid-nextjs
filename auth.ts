@@ -9,7 +9,7 @@ import { Pool } from "@neondatabase/serverless"
 import Credentials from "next-auth/providers/credentials"
 
 const neon = new Pool({
-    connectionString: process.env.AUTH_POSTGRES_PRISMA_URL,
+    connectionString: process.env.AUTH_POSTGRES_URL,
 })
 const adapter = new PrismaNeon(neon)
 const prisma = new PrismaClient({ adapter })
@@ -46,4 +46,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
         },
     })],
+    events: {
+        async createUser({ user }) {
+            console.log('A new user has been created:', user);
+            if (!user.id) {
+                throw new Error('User ID is undefined.');
+            }
+            const oneMonthFromNow = new Date();
+            oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
+            // Add default credit
+            await prisma.credit.create({
+                data: {
+                    userId: user.id as string,
+                    amount: 2000,
+                    expiresAt: oneMonthFromNow //1 month expiry
+                },
+            });
+
+            // Add default subscription
+            await prisma.subscription.create({
+                data: {
+                    userId: user.id as string,
+                    tier: 'basic',
+                    active: true,
+                    expiresAt: oneMonthFromNow //1 month expiry
+                },
+            });
+        },
+    }
 })

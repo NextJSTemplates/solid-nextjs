@@ -6,7 +6,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("AUTH_POSTGRES_URL")
 }
 
 generator client {
@@ -14,25 +14,42 @@ generator client {
   previewFeatures = ["driverAdapters"]
 }
 
+// Enum definitions
+enum Visibility {
+  public
+  private
+}
+
+enum Kind {
+  text
+  code
+  image
+}
+
+// Models
 model User {
-  id            String          @id @default(cuid())
+  id            String    @id @default(uuid())
   name          String?
-  email         String          @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   password      String?
+
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
   Authenticator Authenticator[]
   subscriptions Subscription[]
   credits       Credit[]
+  chats         Chat[]
+  documents     Document[]
+  suggestions   Suggestion[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 }
 
 model Account {
   userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   type              String
   provider          String
   providerAccountId String
@@ -43,11 +60,8 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   @@id([provider, providerAccountId])
 }
@@ -57,9 +71,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model VerificationToken {
@@ -70,10 +83,10 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-// Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
   userId               String
+  user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   providerAccountId    String
   credentialPublicKey  String
   counter              Int
@@ -81,30 +94,28 @@ model Authenticator {
   credentialBackedUp   Boolean
   transports           String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
   @@id([userId, credentialID])
 }
 
 model Subscription {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  tier      String // e.g., "Basic", "Pro", "Premium"
-  active    Boolean  @default(true)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tier      String
+  active    Boolean  @default(false)
   expiresAt DateTime
 }
 
 model Credit {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   amount    Int
   expiresAt DateTime
 }
 
 model VerificationRequest {
-  id         String   @id @default(cuid())
+  id         String   @id @default(uuid())
   identifier String
   token      String   @unique
   expires    DateTime
@@ -112,4 +123,62 @@ model VerificationRequest {
   updatedAt  DateTime @updatedAt
 
   @@unique([identifier, token])
+}
+
+model Chat {
+  id         String     @id @default(uuid())
+  createdAt  DateTime   @default(now())
+  title      String
+  userId     String
+  visibility Visibility @default(private)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages   Message[]
+  votes      Vote[]
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  chatId    String
+  role      String
+  content   Json
+  createdAt DateTime @default(now())
+  chat      Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  votes     Vote[]
+}
+
+model Vote {
+  chatId    String
+  messageId String
+  isUpvoted Boolean
+  chat      Chat    @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@id([chatId, messageId])
+}
+
+model Document {
+  id          String       @id @unique @default(uuid())
+  createdAt   DateTime     @default(now())
+  title       String
+  content     String?
+  kind        Kind         @default(text)
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  suggestions Suggestion[]
+
+  @@unique([id, createdAt])
+}
+
+model Suggestion {
+  id                String   @id @default(uuid())
+  documentId        String
+  documentCreatedAt DateTime
+  originalText      String
+  suggestedText     String
+  description       String?
+  isResolved        Boolean  @default(false)
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document          Document @relation(fields: [documentId, documentCreatedAt], references: [id, createdAt], onDelete: Cascade)
+  createdAt         DateTime @default(now())
 }

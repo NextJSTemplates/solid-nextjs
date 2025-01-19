@@ -12,6 +12,9 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
         port: "",
       },
+      {
+        hostname: 'avatar.vercel.sh',
+      },
     ],
   },
 };

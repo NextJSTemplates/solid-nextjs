@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { validateEmail } from "../../lib/utils";
+import { validateEmail } from "../../lib/email_utils";
 import { redirect, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
@@ -26,7 +26,7 @@ const Signup = () => {
   const { data: session } = useSession();
   console.log("The session is ", session);
   if (session?.user) {
-    redirect("/dashboard");
+    redirect("/chatbot");
   }
   const resendAction = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -64,7 +64,7 @@ const Signup = () => {
         const data = await res.json();
         console.log(data);
         toast.success("user registered successfully");
-        redirect("/dashboard");
+        redirect("/chatbot");
         // redirect("/auth/signin");
         // registration success
       } else {
@@ -76,7 +76,7 @@ const Signup = () => {
     }
   }
   const handleRedirect = () => {
-    console.log("Redirecting to /dashboard...");
+    console.log("Redirecting to /chatbot...");
     router.push("/");
     //redirect("/auth/signin")
   };
@@ -141,7 +141,7 @@ const Signup = () => {
               <button
                 aria-label="signup with google"
                 className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
-                onClick={() => signIn("google", { redirectTo: "/dashboard" })}
+                onClick={() => signIn("google", { redirectTo: "/chatbot" })}
               >
                 <span className="mr-3">
                   <svg
@@ -182,7 +182,7 @@ const Signup = () => {
               <button
                 aria-label="signup with github"
                 className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
-                onClick={() => signIn("github", { redirectTo: "/dashboard" })}
+                onClick={() => signIn("github", { redirectTo: "/chatbot" })}
               >
                 <span className="mr-3">
                   <svg

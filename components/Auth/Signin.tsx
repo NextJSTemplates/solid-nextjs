@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { validateEmail } from "../../lib/utils";
+import { validateEmail } from "../../lib/email_utils";
 import toast, { Toaster } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -30,7 +30,7 @@ const Signin = () => {
   const { data: session } = useSession();
   console.log("The session is ", session);
   if (session?.user) {
-    redirect("/dashboard");
+    redirect("/chatbot");
   }
   const resendAction = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -61,7 +61,7 @@ const Signin = () => {
       password,
       callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}`,
       //redirect: false,
-      redirectTo: "/dashboard",
+      redirectTo: "/chatbot",
     });
 
     if (res?.ok) {
@@ -137,7 +137,7 @@ const Signin = () => {
                 <button
                   aria-label="sign with google"
                   className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
-                  onClick={() => signIn("google", { redirectTo: "/dashboard" })}
+                  onClick={() => signIn("google", { redirectTo: "/chatbot" })}
                 >
                   <span className="mr-3">
                     <svg
@@ -179,7 +179,7 @@ const Signin = () => {
                   aria-label="signup with github"
                   className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
                   onClick={() => {
-                    signIn("github", { redirectTo: "/dashboard" });
+                    signIn("github", { redirectTo: "/chatbot" });
                   }}
                 >
                   <span className="mr-3">

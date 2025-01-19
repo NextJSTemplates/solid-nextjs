@@ -34,7 +34,7 @@ const menuData: Menu[] = [
         id: 31,
         title: "Crypto",
         newTab: false,
-        path: "/dashboard",
+        path: "/chatbot",
       },
       /* {
         id: 31,
