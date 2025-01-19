@@ -34,7 +34,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row items-center gap-3"
             >
-              <span className="hover:bg-muted cursor-pointer rounded-md px-2 text-lg font-semibold">
+              <span className="cursor-pointer rounded-md px-2 text-lg font-semibold hover:bg-muted">
                 Chatbot
               </span>
             </Link>
@@ -46,7 +46,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                   className="h-fit p-2"
                   onClick={() => {
                     setOpenMobile(false);
-                    router.push("/");
+                    router.push("/chatbot");
                     router.refresh();
                   }}
                 >

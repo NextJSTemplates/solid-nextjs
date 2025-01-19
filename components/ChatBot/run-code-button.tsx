@@ -91,7 +91,7 @@ export function PureRunCodeButton({
     if (isPython) {
       try {
         if (!currentPyodideInstance) {
-          // @ts-expect-error - loadPyodide is not defined
+          // @ts-ignore - loadPyodide is not defined
           const newPyodideInstance = await globalThis.loadPyodide({
             indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
           });

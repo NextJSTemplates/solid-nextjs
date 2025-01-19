@@ -41,7 +41,7 @@ function PureChatHeader({
               variant="outline"
               className="order-2 ml-auto px-2 md:order-1 md:ml-0 md:h-fit md:px-2"
               onClick={() => {
-                router.push("/");
+                router.push("/chatbot");
                 router.refresh();
               }}
             >

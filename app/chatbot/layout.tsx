@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/components/ChatBot/theme-provider";
 
-import "./globals.css";
+import "./chat_globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat.vercel.ai"),
