@@ -20,7 +20,7 @@ interface SpeechRecognition {
     onerror: (event: SpeechRecognitionErrorEvent) => void;
 }
 
-declare var SpeechRecognition: {
+declare let SpeechRecognition: {
     prototype: SpeechRecognition;
     new(): SpeechRecognition;
 };

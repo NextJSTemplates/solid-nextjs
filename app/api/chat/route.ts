@@ -1,4 +1,5 @@
 import {
+  type CoreUserMessage,
   type Message,
   convertToCoreMessages,
   createDataStreamResponse,
@@ -31,8 +32,8 @@ import {
   sanitizeResponseMessages,
 } from '@/lib/utils';
 
-import { generateTitleFromUserMessage } from '../../actions';
-import { getSession } from 'next-auth/react';
+import { generateTitleFromUserMessage } from '../../chatbot/(chat)/actions';
+import { auth } from '@/auth';
 
 export const maxDuration = 60;
 
@@ -60,7 +61,7 @@ export async function POST(request: Request) {
   }: { id: string; messages: Array<Message>; modelId: string } =
     await request.json();
 
-  const session = await getSession();
+  const session = await auth();
 
   if (!session || !session?.user || !session?.user.id) {
     return new Response('Unauthorized', { status: 401 });
@@ -73,7 +74,7 @@ export async function POST(request: Request) {
   }
 
   const coreMessages = convertToCoreMessages(messages);
-  const userMessage = getMostRecentUserMessage(coreMessages);
+  const userMessage = getMostRecentUserMessage(coreMessages) as CoreUserMessage;
 
   if (!userMessage) {
     return new Response('No user message found', { status: 400 });
@@ -491,7 +492,7 @@ export async function DELETE(request: Request) {
     return new Response('Not Found', { status: 404 });
   }
 
-  const session = await getSession();
+  const session = await auth();
 
   if (!session || !session.user) {
     return new Response('Unauthorized', { status: 401 });

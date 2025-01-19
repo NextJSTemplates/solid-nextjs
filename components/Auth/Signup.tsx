@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { validateEmail } from "../../lib/email_utils";
 import { redirect, useRouter } from "next/navigation";
@@ -44,7 +44,7 @@ const Signup = () => {
       const name = data.firstName + data.lastName;
       const email = data.email;
       const password = data.password;
-      let userData = {
+      const userData = {
         name,
         email,
         password,
@@ -69,7 +69,7 @@ const Signup = () => {
         // registration success
       } else {
         //registration faled
-        toast.error("user registration failed" + JSON.stringify(res.text()));
+        toast.error(`user registration failed${JSON.stringify(res.text())}`);
       }
     } catch (e) {
       console.log("error", e);
@@ -82,7 +82,7 @@ const Signup = () => {
   };
 
   function validate() {
-    let emailIsValid = validateEmail(data.email);
+    const emailIsValid = validateEmail(data.email);
 
     if (!emailIsValid) {
       toast.error("invalid email");
@@ -99,7 +99,7 @@ const Signup = () => {
       <section className="pb-12.5 pt-32.5 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
         <Toaster position="bottom-center" />
         <div className="relative z-1 mx-auto max-w-c-1016 px-7.5 pb-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20">
-          <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
+          <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]" />
           <div className="absolute bottom-17.5 left-0 -z-1 h-1/3 w-full">
             <Image
               src="/images/shape/shape-dotted-light.svg"
@@ -200,11 +200,11 @@ const Signup = () => {
             </div>
 
             <div className="mb-10 flex items-center justify-center">
-              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
+              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block" />
               <p className="text-body-color dark:text-body-color-dark w-full px-5 text-center text-base">
                 Or, register with your email
               </p>
-              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block"></span>
+              <span className="dark:bg-stroke-dark hidden h-[1px] w-full max-w-[200px] bg-stroke dark:bg-strokedark sm:block" />
             </div>
 
             <form onSubmit={resendAction}>

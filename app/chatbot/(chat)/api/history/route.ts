@@ -1,8 +1,8 @@
+import { auth } from '@/auth';
 import { getChatsByUserId } from '@/lib/db/queries';
-import { getSession } from 'next-auth/react';
 
 export async function GET() {
-  const session = await getSession();
+  const session = await auth();
 
   if (!session || !session.user) {
     return Response.json('Unauthorized!', { status: 401 });

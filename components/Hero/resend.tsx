@@ -1,5 +1,5 @@
 "use client";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
 export function SignIn() {

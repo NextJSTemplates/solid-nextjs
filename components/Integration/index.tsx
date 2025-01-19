@@ -84,7 +84,7 @@ const Integration = () => {
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
               className="animate_top w-1/6"
-            ></motion.div>
+            />
 
             <motion.div
               variants={{
@@ -132,7 +132,7 @@ const Integration = () => {
               viewport={{ once: true }}
               className="animate_top w-1/6"
             >
-              <div className="h-[11px] w-[11px] rounded-full bg-[#FFDB26]"></div>
+              <div className="h-[11px] w-[11px] rounded-full bg-[#FFDB26]" />
             </motion.div>
 
             <motion.div
@@ -180,7 +180,7 @@ const Integration = () => {
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
               className="animate_top w-1/6"
-            ></motion.div>
+            />
 
             <motion.div
               variants={{
@@ -200,7 +200,7 @@ const Integration = () => {
               viewport={{ once: true }}
               className="animate_top w-1/6"
             >
-              <div className="h-[15px] w-[15px] rounded-full bg-[#62E888]"></div>
+              <div className="h-[15px] w-[15px] rounded-full bg-[#62E888]" />
             </motion.div>
 
             <motion.div
@@ -249,7 +249,7 @@ const Integration = () => {
               viewport={{ once: true }}
               className="animate_top w-1/6"
             >
-              <div className="h-[23px] w-[23px] rounded-full bg-[#EF5C00]"></div>
+              <div className="h-[23px] w-[23px] rounded-full bg-[#EF5C00]" />
             </motion.div>
 
             <motion.div
@@ -298,7 +298,7 @@ const Integration = () => {
               viewport={{ once: true }}
               className="animate_top w-1/6"
             >
-              <div className="h-[15px] w-[15px] rounded-full bg-[#016BFF]"></div>
+              <div className="h-[15px] w-[15px] rounded-full bg-[#016BFF]" />
             </motion.div>
 
             <motion.div

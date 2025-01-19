@@ -8,8 +8,6 @@ import { useWindowSize } from "usehooks-ts";
 
 import type { Document } from "@/lib/db/schema";
 import { getDocumentTimestampByIndex } from "@/lib/utils";
-
-import type { UIBlock } from "./block";
 import { LoaderIcon } from "./icons";
 import { Button } from "../ui/button";
 import { useBlock } from "@/hooks/use-block";
@@ -57,8 +55,8 @@ export const VersionFooter = ({
             setIsMutating(true);
 
             mutate(
-              `/api/document?id=${block.documentId}`,
-              await fetch(`/api/document?id=${block.documentId}`, {
+              `/chatbot/api/document?id=${block.documentId}`,
+              await fetch(`/chatbot/api/document?id=${block.documentId}`, {
                 method: "PATCH",
                 body: JSON.stringify({
                   timestamp: getDocumentTimestampByIndex(

@@ -23,13 +23,20 @@ import { useLocalStorage, useWindowSize } from "usehooks-ts";
 
 import { sanitizeUIMessages } from "@/lib/utils";
 
-import { ArrowUpIcon, PaperclipIcon, StopIcon } from "./icons";
+import {
+  ArrowUpIcon,
+  MicAnimatedIcon,
+  MicIcon,
+  PaperclipIcon,
+  StopIcon,
+} from "./icons";
 import { PreviewAttachment } from "./preview-attachment";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { SuggestedActions } from "./suggested-actions";
 import equal from "fast-deep-equal";
 
+let recognition: SpeechRecognition | null = null;
 function PureMultimodalInput({
   chatId,
   input,
@@ -67,6 +74,7 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
+  const [isMicActive, setIsMicActive] = useState(false);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -111,7 +119,57 @@ function PureMultimodalInput({
     setLocalStorageInput(input);
   }, [input, setLocalStorageInput]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        if (!recognition) return;
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = "en-US";
+
+        recognition.onresult = async (event: SpeechRecognitionEvent) => {
+          const speechResult = Array.from(event.results)
+            .map((result) => result[0].transcript)
+            .join(" ");
+          setInput(speechResult);
+        };
+
+        recognition.onerror = (event) => {
+          console.error("Speech recognition error:", event.error);
+          setIsMicActive(false);
+        };
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMicActive) {
+      startListening();
+    } else {
+      stopListening();
+    }
+  }, [isMicActive]);
+
+  const startListening = () => {
+    if (recognition) {
+      recognition.start();
+      //setChatResponse(null);
+    }
+  };
+
+  const stopListening = () => {
+    if (recognition) {
+      recognition.stop();
+      setIsMicActive(false);
+    }
+  };
+
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsMicActive(false);
     setInput(event.target.value);
     adjustHeight();
   };
@@ -147,7 +205,7 @@ function PureMultimodalInput({
     formData.append("file", file);
 
     try {
-      const response = await fetch("/api/files/upload", {
+      const response = await fetch("/chatbot/api/files/upload", {
         method: "POST",
         body: formData,
       });
@@ -260,15 +318,32 @@ function PureMultimodalInput({
         <AttachmentsButton fileInputRef={fileInputRef} isLoading={isLoading} />
       </div>
 
-      <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
-        {isLoading ? (
-          <StopButton stop={stop} setMessages={setMessages} />
+      <div className="absolute bottom-0 right-0 flex w-fit flex-row items-center justify-end p-2">
+        {input && !isMicActive ? (
+          <div
+            className=""
+            onClick={() => {
+              setIsMicActive(false);
+            }}
+          >
+            {isLoading ? (
+              <StopButton stop={stop} setMessages={setMessages} />
+            ) : (
+              <SendButton
+                input={input}
+                submitForm={submitForm}
+                uploadQueue={uploadQueue}
+              />
+            )}
+          </div>
         ) : (
-          <SendButton
-            input={input}
-            submitForm={submitForm}
-            uploadQueue={uploadQueue}
-          />
+          <div
+            onClick={() => {
+              setIsMicActive(!isMicActive);
+            }}
+          >
+            {!isMicActive ? <MicIcon /> : <MicAnimatedIcon />}
+          </div>
         )}
       </div>
     </div>

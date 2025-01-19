@@ -6,6 +6,7 @@ import { generateUUID } from "@/lib/utils";
 import { DataStreamHandler } from "@/components/ChatBot/data-stream-handler";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 export default async function Page() {
   const id = generateUUID();
 
@@ -21,14 +22,16 @@ export default async function Page() {
 
   return (
     <>
-      <Chat
-        key={id}
-        id={id}
-        initialMessages={[]}
-        selectedModelId={selectedModelId}
-        selectedVisibilityType="private"
-        isReadonly={false}
-      />
+      <SessionProvider>
+        <Chat
+          key={id}
+          id={id}
+          initialMessages={[]}
+          selectedModelId={selectedModelId}
+          selectedVisibilityType="private"
+          isReadonly={false}
+        />
+      </SessionProvider>
       <DataStreamHandler id={id} />
     </>
   );

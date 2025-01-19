@@ -1,7 +1,7 @@
 import SidebarLink from "@/components/Docs/SidebarLink";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import fs from "fs";
-import path from "path";
+import path from "node:path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 

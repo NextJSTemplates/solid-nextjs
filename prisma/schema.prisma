@@ -28,13 +28,13 @@ enum Kind {
 
 // Models
 model User {
-  id            String    @id @default(uuid())
+  id            String          @id @default(uuid())
   name          String?
-  email         String    @unique
+  email         String          @unique
   emailVerified DateTime?
   image         String?
   password      String?
-
+  ethereum      String?
   accounts      Account[]
   sessions      Session[]
   Authenticator Authenticator[]

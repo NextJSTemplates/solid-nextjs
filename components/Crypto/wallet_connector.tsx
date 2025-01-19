@@ -1,14 +1,15 @@
-import { useState } from "react";
 import Head from "next/head";
 import { createThirdwebClient } from "thirdweb";
-import { ConnectButton, useConnect } from "thirdweb/react";
+import { ConnectButton } from "thirdweb/react";
 import styles from "../../styles/wallet_connector.module.css";
 const client = createThirdwebClient({
   clientId: "19490c4ed25bd67afd3cceec71670335",
 });
 export default function WalletConnector() {
   return (
-    <div className="100hw flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-900 via-purple-800 to-black text-white">
+    <>
+      <ConnectButton client={client} theme={"light"} />
+      {/* <div className="100hw flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-900 via-purple-800 to-black text-white">
       <Head>
         <title>Sahaai - Automate Your Crypto Commerce</title>
       </Head>
@@ -43,5 +44,7 @@ export default function WalletConnector() {
         }
       `}</style>
     </div>
+      */}
+    </>
   );
 }

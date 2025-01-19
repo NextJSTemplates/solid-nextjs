@@ -1,8 +1,8 @@
 'use client';
 
 import { updateChatVisibility } from "@/app/chatbot/(chat)/actions";
-import { VisibilityType } from '@/components/ChatBot/visibility-selector';
-import { Chat } from '@/lib/db/schema';
+import type { VisibilityType } from '@/components/ChatBot/visibility-selector';
+import type { Chat } from '@/lib/db/schema';
 import { useMemo } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 
@@ -14,7 +14,7 @@ export function useChatVisibility({
   initialVisibility: VisibilityType;
 }) {
   const { mutate, cache } = useSWRConfig();
-  const history: Array<Chat> = cache.get('/api/history')?.data;
+  const history: Array<Chat> = cache.get('/chatbot/api/history')?.data;
 
   const { data: localVisibility, mutate: setLocalVisibility } = useSWR(
     `${chatId}-visibility`,
@@ -35,7 +35,7 @@ export function useChatVisibility({
     setLocalVisibility(updatedVisibilityType);
 
     mutate<Array<Chat>>(
-      '/api/history',
+      '/chatbot/api/history',
       (history) => {
         return history
           ? history.map((chat) => {

@@ -1,10 +1,10 @@
-import { BlockKind } from '@/components/ChatBot/block';
+import { auth } from '@/auth';
+import type { BlockKind } from '@/components/ChatBot/block';
 import {
   deleteDocumentsByIdAfterTimestamp,
   getDocumentsById,
   saveDocument,
 } from '@/lib/db/queries';
-import { getSession } from 'next-auth/react';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     return new Response('Missing id', { status: 400 });
   }
 
-  const session = await getSession();
+  const session = await auth();
 
   if (!session || !session.user) {
     return new Response('Unauthorized', { status: 401 });
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     return new Response('Missing id', { status: 400 });
   }
 
-  const session = await getSession();
+  const session = await auth();
 
   if (!session) {
     return new Response('Unauthorized', { status: 401 });
@@ -79,7 +79,7 @@ export async function PATCH(request: Request) {
     return new Response('Missing id', { status: 400 });
   }
 
-  const session = await getSession();
+  const session = await auth();
 
   if (!session || !session.user) {
     return new Response('Unauthorized', { status: 401 });

@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+
 import "../globals.css";
 import { redirect } from "next/navigation";
 

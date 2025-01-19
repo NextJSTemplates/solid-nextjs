@@ -38,7 +38,7 @@ async function loginUserHandler(req) {
 }
 // Function to exclude user password returned from prisma
 function exclude(user, keys) {
-    for (let key of keys) {
+    for (const key of keys) {
         delete user[key];
     }
     return user;

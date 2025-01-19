@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { signIn } from "../../auth";
+import { Toaster } from "react-hot-toast";
 import { SignIn } from "./resend";
 const Hero = () => {
   const [email, setEmail] = useState("");

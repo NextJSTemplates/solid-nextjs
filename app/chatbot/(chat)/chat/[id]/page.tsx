@@ -6,7 +6,7 @@ import { DEFAULT_MODEL_NAME, models } from "@/lib/ai/models";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { convertToUIMessages } from "@/lib/utils";
 import { DataStreamHandler } from "@/components/ChatBot/data-stream-handler";
-import { useSession } from "next-auth/react";
+import { auth } from "@/auth";
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -17,7 +17,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     notFound();
   }
 
-  const { data: session } = useSession();
+  const session = await auth();
   if (chat.visibility === "private") {
     if (!session || !session.user) {
       return notFound();

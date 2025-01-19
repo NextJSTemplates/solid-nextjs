@@ -9,7 +9,7 @@ import { createRoot } from "react-dom/client";
 
 import { Suggestion as PreviewSuggestion } from "@/components/ChatBot/suggestion";
 import type { Suggestion } from "@/lib/db/schema";
-import { BlockKind } from "@/components/ChatBot/block";
+import type { BlockKind } from "@/components/ChatBot/block";
 
 export interface UISuggestion extends Suggestion {
   selectionStart: number;

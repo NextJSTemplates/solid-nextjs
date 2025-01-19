@@ -32,11 +32,10 @@ import {
   LogsIcon,
   MessageIcon,
   PenIcon,
-  SparklesIcon,
   StopIcon,
   SummarizeIcon,
 } from './icons';
-import { BlockKind } from './block';
+import type { BlockKind } from './block';
 
 type ToolProps = {
   type:

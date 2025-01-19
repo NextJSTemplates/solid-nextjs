@@ -1,14 +1,10 @@
 "use client";
 
 import { ThirdwebProvider } from "thirdweb/react";
-import Script from "next/script";
 import { Main } from "../../components/Crypto/main";
-import Head from "next/head";
-import { redirect, usePathname, useSearchParams } from "next/navigation";
+import { redirect, usePathname, } from "next/navigation";
 import { useEffect } from "react";
 import { sendGAEvent } from "@next/third-parties/google";
-import { SessionProvider } from "next-auth/react";
-import { AppProps } from "next/app";
 import { useSession } from "next-auth/react";
 import { auth } from "../../auth";
 export default function Home() {
@@ -24,7 +20,7 @@ export default function Home() {
     sendGAEvent("conversion", { page_path: url });
   }, []);
   useEffect(() => {
-    if (status == "unauthenticated") {
+    if (status === "unauthenticated") {
       redirect("/auth/signin");
     }
     console.log(session, status);
@@ -32,7 +28,7 @@ export default function Home() {
   /*if (!session?.user) {
     redirect("/auth/signin");
   }*/
-  if (status == "loading") return <div>loading...</div>;
+  if (status === "loading") return <div>loading...</div>;
 
   return (
     <div className="animate_top mx-auto text-center">

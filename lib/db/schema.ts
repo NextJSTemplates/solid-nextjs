@@ -10,7 +10,7 @@ import {
     timestamp,
     primaryKey,
 } from "drizzle-orm/pg-core";
-import { InferSelectModel, sql } from "drizzle-orm";
+import { type InferSelectModel, sql } from "drizzle-orm";
 import { relations } from "drizzle-orm";
 
 // User table
@@ -19,6 +19,7 @@ export const user = pgTable("User", {
     name: varchar("name"),
     email: varchar("email").notNull().unique(),
     emailVerified: timestamp("emailVerified"),
+    ethereum: varchar("ethereum"),
     image: text("image"),
     password: text("password"),
     createdAt: timestamp("createdAt").default(sql`now()`),
@@ -174,7 +175,7 @@ export const creditRelations = relations(credit, ({ one }) => ({
     }),
 }));
 
-export const chat = pgTable("chat", {
+export const chat = pgTable("Chat", {
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     createdAt: timestamp("createdAt").notNull(),
     title: text("title").notNull(),
@@ -187,7 +188,7 @@ export const chat = pgTable("chat", {
 });
 export type Chat = InferSelectModel<typeof chat>;
 
-export const message = pgTable("message", {
+export const message = pgTable("Message", {
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     chatId: uuid("chatId")
         .notNull()
@@ -199,7 +200,7 @@ export const message = pgTable("message", {
 export type Message = InferSelectModel<typeof message>;
 
 export const vote = pgTable(
-    "vote",
+    "Vote",
     {
         chatId: uuid("chatId")
             .notNull()
@@ -216,7 +217,7 @@ export const vote = pgTable(
 export type Vote = InferSelectModel<typeof vote>;
 
 export const document = pgTable(
-    "document",
+    "Document",
     {
         id: uuid("id").notNull().defaultRandom(),
         createdAt: timestamp("createdAt").notNull(),
@@ -236,7 +237,7 @@ export const document = pgTable(
 export type Document = InferSelectModel<typeof document>;
 
 export const suggestion = pgTable(
-    "suggestion",
+    "Suggestion",
     {
         id: uuid("id").notNull().defaultRandom(),
         documentId: uuid("documentId").notNull(),

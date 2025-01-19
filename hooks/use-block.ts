@@ -1,6 +1,6 @@
 'use client';
 
-import { UIBlock } from '@/components/ChatBot/block';
+import type { UIBlock } from '@/components/ChatBot/block';
 import { useCallback, useMemo } from 'react';
 import useSWR from 'swr';
 

@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
 import SectionHeader from "../Common/SectionHeader";
-import RazorpayEnterpriseSubscriptionButton from "../Razorpay/enterprise";
 import { redirect } from "next/navigation";
-import PaypalCheckout from "../Paypal/checkout";
 
 const Pricing = () => {
   return (
@@ -58,7 +56,7 @@ const Pricing = () => {
                   <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
                     Access to All Tools{" "}
                   </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee"></li>
+                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee" />
                   <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
                     Custom Tool Creation Support
                   </li>
@@ -115,7 +113,7 @@ const Pricing = () => {
                   <li className="mb-4 text-black last:mb-0 dark:text-manatee">
                     Access to all Tools
                   </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee"></li>
+                  <li className="mb-4 text-black last:mb-0 dark:text-manatee" />
                   <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
                     Custom Tool Creation Support
                   </li>

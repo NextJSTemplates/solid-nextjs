@@ -1,4 +1,4 @@
-import { Testimonial } from "@/types/testimonial";
+import type { Testimonial } from "@/types/testimonial";
 import Image from "next/image";
 
 const SingleTestimonial = ({ review }: { review: Testimonial }) => {

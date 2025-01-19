@@ -2,8 +2,8 @@
 
 import { useChat } from "ai/react";
 import { useEffect, useRef, useState } from "react";
-import { BlockKind } from "./block";
-import { Suggestion } from "@/lib/db/schema";
+import type { BlockKind } from "./block";
+import type { Suggestion } from "@/lib/db/schema";
 import { initialBlockData, useBlock } from "@/hooks/use-block";
 import { useUserMessageId } from "@/hooks/use-user-message-id";
 import { useSWRConfig } from "swr";
@@ -37,7 +37,7 @@ export function DataStreamHandler({ id }: { id: string }) {
   useEffect(() => {
     if (optimisticSuggestions && optimisticSuggestions.length > 0) {
       const [optimisticSuggestion] = optimisticSuggestions;
-      const url = `/api/suggestions?documentId=${optimisticSuggestion.documentId}`;
+      const url = `/chatbot/api/suggestions?documentId=${optimisticSuggestion.documentId}`;
       mutate(url, optimisticSuggestions, false);
     }
   }, [optimisticSuggestions, mutate]);

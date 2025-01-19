@@ -4,7 +4,7 @@ import IdentifierModal from "./identifierModal";
 import Sahaai from "./sahaai";
 import WalletConnector from "./wallet_connector";
 import { ethers } from "ethers";
-import { useActiveAccount, useChainMetadata } from "thirdweb/react";
+import { useActiveAccount, } from "thirdweb/react";
 import Networks from "../../network.json";
 import { baseNetwork } from "../../utils";
 import SignupModal from "./userSignup";
@@ -51,7 +51,7 @@ export function Main() {
       const chainId = (await provider.getNetwork()).chainId;
       console.log("chain Id is:", chainId);
 
-      if (chainId !== Number(8453) && chainId != Number(84532)) {
+      if (chainId !== Number(8453) && chainId !== Number(84532)) {
         console.log("switching chain");
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
@@ -194,13 +194,13 @@ export function Main() {
         return;
       }
       console.log(contract);
-      const tx = await contract.registerIdentifier(String(identifier + ".eth"));
+      const tx = await contract.registerIdentifier(String(`${identifier}.eth`));
       const response = await tx.wait;
       console.log("identifier is", response);
       setIdentifier(identifier);
     } catch (err: any) {
       console.error("Failed to register identifier:", err);
-      toast.error("failed to register indentifier" + err.reason);
+      toast.error(`failed to register indentifier${err.reason}`);
       //alert(err.reason);
       setMessage("Failed to register identifier. Check console for errors.");
     }

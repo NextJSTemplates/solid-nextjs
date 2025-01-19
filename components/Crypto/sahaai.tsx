@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import sahaaiContractData from "../../contract_files/SahaaiManager.json";
 import tokenContractData from "../../contract_files/TokenManager.json";
 import styles from "../../styles/Sahaai.module.css";
 import AiWalletModal from "./aiWalletModal";
@@ -117,12 +116,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
       console.log(
         "The prompt is:",
         String(
-          `My Address:${user_id}` +
-            prompt +
-            ",hash is:" +
-            hash +
-            "  & signature is:" +
-            signature,
+          `My Address:${user_id}${prompt},hash is:${hash}  & signature is:${signature}`,
         ),
       );
       //setTranscript(null);
@@ -131,13 +125,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
         chatApiUrl as string,
         {
           message: String(
-            `My Address:${user_id},` +
-              "query:" +
-              prompt +
-              ",hash is:" +
-              hash +
-              ",&signature is:" +
-              signature,
+            `My Address:${user_id},query:${prompt},hash is:${hash},&signature is:${signature}`,
           ),
           thread_id: threadId,
           user_id: user_id,
@@ -162,7 +150,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
         throw new Error("Failed to call chat server");
       }
       const { text } = response.data;
-      setChatResponse(chatResponse + "\n" + "Sahaai:   " + text + "\n");
+      setChatResponse(`${chatResponse}\nSahaai:   ${text}\n`);
       console.log("the llm response is:", text);
       await TTS(String(response.data.text));
     } catch (error) {
@@ -193,14 +181,14 @@ const Sahaai: React.FC<sahaaiProps> = ({
       setLongPressTimeout(null);
     }
     stopListening();
-    if (status == "listening") await SendToAIAgent(transcript);
+    if (status === "listening") await SendToAIAgent(transcript);
   };
   const handleTap = () => {
     if (status === "speaking" && audio) {
       audio.pause();
       setStatus("idle");
       console.log("speaking stopped");
-    } else if (audio && status == "idle") {
+    } else if (audio && status === "idle") {
       audio.play();
       setStatus("speaking");
       console.log("speaking started");
@@ -214,6 +202,9 @@ const Sahaai: React.FC<sahaaiProps> = ({
 
       if (SpeechRecognition) {
         recognition = new SpeechRecognition();
+        if (!recognition) {
+          return;
+        }
         recognition.continuous = true;
         recognition.interimResults = true;
         recognition.lang = "en-US";
@@ -223,9 +214,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
             .map((result) => result[0].transcript)
             .join(" ");
           setTranscript(speechResult);
-          setChatResponse(
-            chatResponse + "\n" + "You:   " + speechResult + "\n",
-          );
+          setChatResponse(`${chatResponse}\nYou:   ${speechResult}\n`);
         };
 
         recognition.onerror = (event) => {
@@ -265,7 +254,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
     if (e.key === "Enter" && !e.shiftKey && input.trim()) {
       e.preventDefault(); // Prevent new line on Enter
       setTranscript(input);
-      setChatResponse(chatResponse + "\n" + "You:   " + input + "\n");
+      setChatResponse(`${chatResponse}\nYou:   ${input}\n`);
       SendToAIAgent(input);
       setInput("");
     }
@@ -274,7 +263,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
   const handleButtonClick = async () => {
     if (input.trim()) {
       setTranscript(input);
-      setChatResponse(chatResponse + "\n" + "You:   " + input + "\n");
+      setChatResponse(`${chatResponse}\nYou:   ${input}\n`);
       SendToAIAgent(input);
       setInput("");
     }
@@ -442,7 +431,7 @@ const Sahaai: React.FC<sahaaiProps> = ({
       }
       console.log(tokenContract, contract, address);
       let tx: any;
-      if (transactionType == "ETH") {
+      if (transactionType === "ETH") {
         console.log("data is:", data);
         tx = await contract.depositETH(address, {
           value: ethers.utils.parseUnits(data.amount, "ether"),

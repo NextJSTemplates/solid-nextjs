@@ -45,7 +45,7 @@ const Footer = () => {
                   />
                 </a>
 
-                <p className="mb-10 mt-5"></p>
+                <p className="mb-10 mt-5" />
 
                 <p className="mb-1.5 text-sectiontitle uppercase tracking-[5px]">
                   contact

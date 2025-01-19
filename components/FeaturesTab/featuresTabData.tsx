@@ -1,4 +1,4 @@
-import { FeatureTab } from "@/types/featureTab";
+import type { FeatureTab } from "@/types/featureTab";
 
 const featuresTabData: FeatureTab[] = [
   {

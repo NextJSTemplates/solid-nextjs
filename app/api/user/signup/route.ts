@@ -20,7 +20,7 @@ const hashPassword = (pass) => {
 
 // function to create user in our database
 async function createUserHandler(req: any) {
-    let errors: string[] = [];
+    const errors: string[] = [];
     const body = await req.json(); // Parse the JSON body from the request
     console.log("Request Body:", body);
     const { name, email, password } = body;

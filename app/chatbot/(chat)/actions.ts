@@ -9,7 +9,7 @@ import {
   getMessageById,
   updateChatVisiblityById,
 } from '@/lib/db/queries';
-import { VisibilityType } from '@/components/ChatBot/visibility-selector';
+import type { VisibilityType } from '@/components/ChatBot/visibility-selector';
 
 export async function saveModelId(model: string) {
   const cookieStore = await cookies();
