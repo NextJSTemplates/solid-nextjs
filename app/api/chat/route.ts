@@ -34,6 +34,7 @@ import {
 
 import { generateTitleFromUserMessage } from '../../chatbot/(chat)/actions';
 import { auth } from '@/auth';
+import { SendToAIAgent } from '@/components/Crypto/utils';
 
 export const maxDuration = 60;
 
@@ -41,7 +42,8 @@ type AllowedTools =
   | 'createDocument'
   | 'updateDocument'
   | 'requestSuggestions'
-  | 'getWeather';
+  | 'getWeather'
+  | 'useCrypto';
 
 const blocksTools: AllowedTools[] = [
   'createDocument',
@@ -50,8 +52,9 @@ const blocksTools: AllowedTools[] = [
 ];
 
 const weatherTools: AllowedTools[] = ['getWeather'];
+const cryptoTools: AllowedTools[] = ["useCrypto"];
 
-const allTools: AllowedTools[] = [...blocksTools, ...weatherTools];
+const allTools: AllowedTools[] = [...blocksTools, ...weatherTools, ...cryptoTools];
 
 export async function POST(request: Request) {
   const {
@@ -109,6 +112,25 @@ export async function POST(request: Request) {
         maxSteps: 5,
         experimental_activeTools: allTools,
         tools: {
+
+          useCrypto: {
+            description: "A tool to execute any crypto ethereum related transaction like send wei & eth or create a token or mint an NFT",
+            parameters: z.object({
+              prompt: z.string(),
+              threadId: z.string(),
+              userId: z.string(),
+              hash: z.string(),
+              signature: z.string(),
+              chainId: z.string(),
+              nonce: z.string()
+            }),
+            execute: async ({ prompt, threadId, userId, hash, signature, chainId, nonce }) => {
+              const response = await SendToAIAgent(prompt, threadId, userId, hash, signature, chainId, nonce)
+              return response;
+            }
+          },
+
+
           getWeather: {
             description: 'Get the current weather at a location',
             parameters: z.object({

@@ -16,12 +16,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import toast, { Toaster } from "react-hot-toast";
 
-let recognition: SpeechRecognition | null = null;
-
-const client = createThirdwebClient({
-  clientId: "19490c4ed25bd67afd3cceec71670335",
-});
-
 const ChatSahaai: React.FC<sahaaiProps> = ({
   chainId,
   sahaai_manager_contract,
@@ -54,26 +48,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
   const subscriptionContract = subscription_manager_contract;
   const signatureContract = signature_manager_contract;
 
-  const firstPlay = () => {
-    if (audioPlayed) {
-      return;
-    }
-    // Create an audio object
-    const audio = new Audio("/sahaai.wav");
-
-    // Play the audio on the first render
-    audio.play().catch((error) => {
-      console.error("Audio play failed:", error);
-    });
-    setAudioPlayed(true);
-  };
-  const handleLongPress = () => {
-    setStatus("listening");
-    if (audio) audio.pause();
-    startListening();
-    console.log("Listening started");
-  };
-
   const generateSecureNonce = (length = 16) => {
     const array = new Uint8Array(length); // Create a byte array
     crypto.getRandomValues(array); // Fill it with cryptographically secure random values
@@ -103,7 +77,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
         setUserId(user_id);
       } else {
         toast.error("Please connect your wallet");
-        return "";
       }
       // Define the API endpoint
       const chatApiUrl = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -153,7 +126,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
       const { text } = response.data;
       setChatResponse(`${chatResponse}\nSahaai:   ${text}\n`);
       console.log("the llm response is:", text);
-      await TTS(String(response.data.text));
     } catch (error) {
       setStatus("idle");
       console.error("Error:", error);
@@ -176,81 +148,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
       .trim();
   };
 
-  const handleLongPressRelease = async () => {
-    if (longPressTimeout) {
-      clearTimeout(longPressTimeout);
-      setLongPressTimeout(null);
-    }
-    stopListening();
-    if (status === "listening") await SendToAIAgent(transcript);
-  };
-  const handleTap = () => {
-    if (status === "speaking" && audio) {
-      audio.pause();
-      setStatus("idle");
-      console.log("speaking stopped");
-    } else if (audio && status === "idle") {
-      audio.play();
-      setStatus("speaking");
-      console.log("speaking started");
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-
-      if (SpeechRecognition) {
-        recognition = new SpeechRecognition();
-        if (!recognition) {
-          return;
-        }
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.lang = "en-US";
-
-        recognition.onresult = async (event: SpeechRecognitionEvent) => {
-          const speechResult = Array.from(event.results)
-            .map((result) => result[0].transcript)
-            .join(" ");
-          setTranscript(speechResult);
-          setChatResponse(`${chatResponse}\nYou:   ${speechResult}\n`);
-        };
-
-        recognition.onerror = (event) => {
-          console.error("Speech recognition error:", event.error);
-          setIsListening(false);
-          setStatus("idle");
-        };
-      }
-    }
-  }, []);
-
-  const startListening = () => {
-    if (recognition && !isListening) {
-      recognition.start();
-      setIsListening(true);
-      //setChatResponse(null);
-    }
-  };
-
-  const stopListening = () => {
-    if (recognition && isListening) {
-      recognition.stop();
-      setIsListening(false);
-    }
-  };
-
-  const handleMouseDown = () => {
-    const timeout = setTimeout(handleLongPress, 500);
-    setLongPressTimeout(timeout);
-  };
-
-  const handleMouseUp = () => {
-    handleLongPressRelease();
-  };
-
   const handleKeyDown = async (e: any) => {
     if (e.key === "Enter" && !e.shiftKey && input.trim()) {
       e.preventDefault(); // Prevent new line on Enter
@@ -271,48 +168,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
     console.log(chainData);
   };
 
-  const TTS = async (input: string | null) => {
-    // Create a blob from the audio file response
-
-    // Decode audio file and create a Blob
-
-    // const audioBuffer = Uint8Array.from(atob(audio_file.content), (c) =>
-    // c.charCodeAt(0)
-    //);
-    try {
-      const formatted_input = removeSpecialCharacters(input as string);
-      console.log("formatted input is:", formatted_input);
-      const audio_file = await fetch(
-        `${process.env.NEXT_PUBLIC_TTS_URL}/api/generate-audio`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ input: formatted_input }),
-        },
-      );
-      console.log(audio_file);
-      const audioBlob = new Blob([Buffer.from(await audio_file.arrayBuffer())]);
-
-      // Create a URL for the audio file
-      const audioUrl = window.URL.createObjectURL(audioBlob);
-      //play the audio inside the browser
-      const newAudio = new Audio(audioUrl);
-      newAudio.onended = () => {
-        setStatus("idle");
-        setAudio(null);
-      };
-      setAudio(newAudio);
-      console.log("Audio file saved successfully!");
-      setStatus("speaking");
-      newAudio.play();
-      console.log("speaking started");
-    } catch (e) {
-      console.log("error fetching Audio", e);
-      setStatus("idle");
-    }
-  };
   /********************* Signing a message ************************************** */
 
   // Sample function to sign data
@@ -459,34 +314,6 @@ const ChatSahaai: React.FC<sahaaiProps> = ({
       toast.error(JSON.stringify(err.reason));
     }
   };
-  //  const renderContent = (content: any) => {
-  //    if (!content) {
-  //      return <p>No results available</p>;
-  //    }
-  //
-  //    // Split content by spaces and render text or images accordingly
-  //    const contentElements = content.split(" ").map((item: any, index: any) => {
-  //      if (item.startsWith("http://") || item.startsWith("https://")) {
-  //        // Render image if URL is detected
-  //        return (
-  //          <img
-  //            key={index}
-  //            src={item}
-  //            alt={`Result ${index}`}
-  //            className={styles.resultImage}
-  //          />
-  //        );
-  //      }
-  //      // Render text otherwise
-  //      return (
-  //        <span key={index} className={styles.resultText}>
-  //          {item}&nbsp;
-  //        </span>
-  //      );
-  //    });
-  //
-  //    return contentElements;
-  //  };
 
   return (
     <div>

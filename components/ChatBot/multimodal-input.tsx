@@ -17,6 +17,7 @@ import {
   type SetStateAction,
   type ChangeEvent,
   memo,
+  useContext,
 } from "react";
 import { toast } from "sonner";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
@@ -35,6 +36,8 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { SuggestedActions } from "./suggested-actions";
 import equal from "fast-deep-equal";
+import { ChatMain } from "../Crypto/chatMain";
+import { CryptoContext } from "./chat";
 
 let recognition: SpeechRecognition | null = null;
 function PureMultimodalInput({
@@ -75,7 +78,7 @@ function PureMultimodalInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
   const [isMicActive, setIsMicActive] = useState(false);
-
+  const { useCrypto, setUseCrypto } = useContext(CryptoContext);
   useEffect(() => {
     if (textareaRef.current) {
       adjustHeight();
@@ -178,7 +181,7 @@ function PureMultimodalInput({
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([]);
 
   const submitForm = useCallback(() => {
-    window.history.replaceState({}, "", `/chat/${chatId}`);
+    window.history.replaceState({}, "", `/chatbot/chat/${chatId}`);
 
     handleSubmit(undefined, {
       experimental_attachments: attachments,
@@ -328,6 +331,15 @@ function PureMultimodalInput({
           >
             {isLoading ? (
               <StopButton stop={stop} setMessages={setMessages} />
+            ) : useCrypto ? (
+              <ChatMain
+                submitForm={submitForm}
+                input={input}
+                uploadQueue={uploadQueue}
+                isSendButton={true}
+                setInput={setInput}
+                chatId={chatId}
+              />
             ) : (
               <SendButton
                 input={input}

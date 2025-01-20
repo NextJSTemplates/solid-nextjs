@@ -4,7 +4,7 @@ import IdentifierModal from "./identifierModal";
 import Sahaai from "./sahaai";
 import WalletConnector from "./wallet_connector";
 import { ethers } from "ethers";
-import { useActiveAccount, } from "thirdweb/react";
+import { useActiveAccount } from "thirdweb/react";
 import Networks from "../../network.json";
 import { baseNetwork } from "../../utils";
 import SignupModal from "./userSignup";
