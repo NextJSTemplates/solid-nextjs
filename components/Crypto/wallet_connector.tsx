@@ -8,7 +8,17 @@ const client = createThirdwebClient({
 export default function WalletConnector() {
   return (
     <>
-      <ConnectButton client={client} theme={"light"} />
+      <ConnectButton
+        connectButton={{
+          style: {
+            padding: "8px 16px",
+            height: "40px",
+            minWidth: "0",
+          },
+        }}
+        client={client}
+        theme={"light"}
+      />
     </>
   );
 }

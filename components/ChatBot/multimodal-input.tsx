@@ -36,7 +36,7 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { SuggestedActions } from "./suggested-actions";
 import equal from "fast-deep-equal";
-import { ChatMain } from "../Crypto/chatMain";
+import ChatMain from "../Crypto/chatMain";
 import { CryptoContext } from "./chat";
 
 let recognition: SpeechRecognition | null = null;

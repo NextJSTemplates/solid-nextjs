@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { type VisibilityType, VisibilitySelector } from "./visibility-selector";
 import { ThirdwebProvider } from "thirdweb/react";
 import WalletConnector from "../Crypto/wallet_connector";
-import { ChatMain } from "../Crypto/chatMain";
+import ChatMain from "../Crypto/chatMain";
 import { CryptoContext } from "./chat";
 
 function PureChatHeader({

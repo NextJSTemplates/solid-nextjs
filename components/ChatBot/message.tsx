@@ -100,10 +100,13 @@ const PurePreviewMessage = ({
                 )}
 
                 <div
-                  className={cn("flex flex-col gap-4", {
-                    "rounded-xl bg-primary px-3 py-2 text-primary-foreground":
-                      message.role === "user",
-                  })}
+                  className={cn(
+                    "flex w-full flex-col gap-4 whitespace-pre-wrap break-words",
+                    {
+                      "max rounded-xl bg-primary px-3 py-2 text-primary-foreground":
+                        message.role === "user",
+                    },
+                  )}
                 >
                   <Markdown>{message.content as string}</Markdown>
                 </div>
@@ -154,7 +157,9 @@ const PurePreviewMessage = ({
                             isReadonly={isReadonly}
                           />
                         ) : (
-                          <pre>{JSON.stringify(result, null, 2)}</pre>
+                          <pre className="text-wrap  break-words">
+                            {JSON.stringify(result, null, 2)}
+                          </pre>
                         )}
                       </div>
                     );
