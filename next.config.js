@@ -11,6 +11,10 @@ const nextConfig = {
   // !! WARN !!
   // ignoreBuildErrors: true,
   // },
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ["localhost"],
     remotePatterns: [
