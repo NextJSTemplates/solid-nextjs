@@ -1,19 +1,33 @@
-'use server';
+"use server";
 
-import { type CoreUserMessage, generateText } from 'ai';
-import { cookies } from 'next/headers';
+import { type CoreUserMessage, generateText } from "ai";
+import { cookies } from "next/headers";
 
-import { customModel } from '@/lib/ai';
+import { customModel } from "@/lib/ai";
 import {
   deleteMessagesByChatIdAfterTimestamp,
   getMessageById,
   updateChatVisiblityById,
-} from '@/lib/db/queries';
-import type { VisibilityType } from '@/components/ChatBot/visibility-selector';
+} from "@/lib/db/queries";
+import type { VisibilityType } from "@/components/ChatBot/visibility-selector";
+import {
+  DEFAULT_MODEL,
+  DEFAULT_MODEL_NAME,
+  Model,
+  models,
+} from "@/lib/ai/models";
 
 export async function saveModelId(model: string) {
   const cookieStore = await cookies();
-  cookieStore.set('model-id', model);
+  cookieStore.set("model-id", model);
+}
+export async function getModelId(): Promise<string> {
+  const cookieStore = await cookies();
+  const modelIdFromCookie = cookieStore.get("model-id")?.value;
+  const selectedModelId =
+    models.find((model) => model.id === modelIdFromCookie)?.id ||
+    DEFAULT_MODEL_NAME;
+  return selectedModelId;
 }
 
 export async function generateTitleFromUserMessage({
@@ -21,8 +35,11 @@ export async function generateTitleFromUserMessage({
 }: {
   message: CoreUserMessage;
 }) {
+  const modelIdFromCookie = await getModelId();
+  const _model: Model =
+    models.find((model) => model.id === modelIdFromCookie) || DEFAULT_MODEL;
   const { text: title } = await generateText({
-    model: customModel('gpt-4o-mini'),
+    model: customModel(_model),
     system: `\n
     - you will generate a short title based on the first message a user begins a conversation with
     - ensure it is not more than 80 characters long

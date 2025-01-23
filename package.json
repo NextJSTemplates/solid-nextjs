@@ -10,6 +10,8 @@
     "lint:fix": "next lint --fix && biome lint --write --unsafe"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^1.1.2",
+    "@ai-sdk/google": "^1.1.2",
     "@ai-sdk/openai": "1.0.19",
     "@ai-sdk/react": "^1.1.0",
     "@auth/drizzle-adapter": "^1.7.4",

@@ -16,9 +16,9 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: "What are the advantages",
-      label: "of using Next.js?",
-      action: "What are the advantages of using Next.js?",
+      title: "Use Crypto",
+      label: "to create erc20 token",
+      action: "Create an erc-20 token with Name Sahaai and symbol S",
     },
     {
       title: "Write code to",
@@ -26,9 +26,9 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
       action: `Write code to demonstrate djikstra's algorithm`,
     },
     {
-      title: "Help me write an essay",
-      label: `about silicon valley`,
-      action: `Help me write an essay about silicon valley`,
+      title: "Convert content",
+      label: `to NFTs`,
+      action: `Create an NFT of a samurai with attributes power 100 skill 100`,
     },
     {
       title: "What is the weather",
