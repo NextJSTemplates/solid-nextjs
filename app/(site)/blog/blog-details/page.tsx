@@ -5,8 +5,9 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Blog Details Page - Solid SaaS Boilerplate",
-  description: "This is Blog details page for Solid Pro",
+
   // other metadata
+  description: "This is Blog details page for Solid Pro"
 };
 
 const SingleBlogPage = async () => {

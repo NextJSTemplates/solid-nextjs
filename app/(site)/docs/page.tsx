@@ -3,8 +3,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Docs Page - Solid SaaS Boilerplate",
-  description: "This is Docs page for Solid Pro",
+
   // other metadata
+  description: "This is Docs page for Solid Pro"
 };
 
 export default function DocsPage() {
