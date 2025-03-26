@@ -8,13 +8,11 @@ This Next.js template's homepage comes with an awesome hero area, logos of assoc
 
 ### [🔥 Get Solid Pro - Next.js SaaS Boilerplate and Starter Kit](https://nextjstemplates.com/templates/solid)
 
-![Startup Pro](https://uideck.com/wp-content/uploads/edd/2023/07/solid-saas.png)
-
 ### [🚀 Solid PRO Live Demo](https://solid.nextjstemplates.com/)
 
 ### [🚀 Solid FREE Live Demo](https://solid-free.nextjstemplates.com/)
 
-### TailAdmin React PRO vs TailAdmin React FREE Comparison 📊
+### Solid PRO vs Solid FREE Comparison 📊
 
 #### [Solid PRO](https://solid.nextjstemplates.com/)
 - SaaS Boilerplate + Starter Kit with Essential Integrations and Functionalities
