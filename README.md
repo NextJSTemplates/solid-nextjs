@@ -84,6 +84,7 @@ If you like the template, please star this repository to inspire the team to cre
 
 **10 April 2025**
 - Update eslint to v9.24.0 to resolve peer deps warning during installation.
+- Migrate to tailwind v4
 
 **29 Jan 2025**
 - Upgraded to Next.js 15

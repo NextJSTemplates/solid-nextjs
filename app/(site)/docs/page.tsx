@@ -23,7 +23,7 @@ export default function DocsPage() {
             </div>
 
             <div className="w-full px-4 lg:w-3/4">
-              <div className="blog-details blog-details-docs shadow-three dark:bg-gray-dark rounded-sm bg-white px-8 py-11 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]">
+              <div className="blog-details blog-details-docs shadow-three dark:bg-gray-dark rounded-xs bg-white px-8 py-11 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]">
                 <h1>Welcome to Startup Documentation</h1>
 
                 <p className="text-body-color dark:text-body-color-dark text-base">

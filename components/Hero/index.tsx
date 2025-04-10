@@ -39,7 +39,7 @@ const Hero = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       type="text"
                       placeholder="Enter your email address"
-                      className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
+                      className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-hidden dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                     />
                     <button
                       aria-label="get started button"
@@ -79,7 +79,7 @@ const Hero = () => {
                   height={21.66}
                   className="absolute -right-6.5 bottom-0 z-1"
                 />
-                <div className=" relative aspect-[700/444] w-full">
+                <div className=" relative aspect-700/444 w-full">
                   <Image
                     className="shadow-solid-l dark:hidden"
                     src="/images/hero/hero-light.svg"

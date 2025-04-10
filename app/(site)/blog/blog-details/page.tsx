@@ -26,7 +26,7 @@ const SingleBlogPage = async () => {
                     <input
                       type="text"
                       placeholder="Search Here..."
-                      className="w-full rounded-lg border border-stroke px-6 py-4 shadow-solid-12 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
+                      className="w-full rounded-lg border border-stroke px-6 py-4 shadow-solid-12 focus:border-primary focus:outline-hidden dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                     />
 
                     <button
@@ -78,7 +78,7 @@ const SingleBlogPage = async () => {
             <div className="lg:w-2/3">
               <div className="animate_top rounded-md border border-stroke bg-white p-7.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection md:p-10">
                 <div className="mb-10 w-full overflow-hidden ">
-                  <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
+                  <div className="relative aspect-97/60 w-full sm:aspect-97/44">
                     <Image
                       src={"/images/blog/blog-01.png"}
                       alt="Kobe Steel plant that supplied"

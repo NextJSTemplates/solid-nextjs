@@ -1,22 +1,144 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* third-party libraries CSS */
+@custom-variant dark (&:is(.dark *));
 
-.testimonial-01 .swiper-pagination-bullet {
-  @apply h-2.5 w-2.5 bg-stroke opacity-100;
+@theme {
+  --font-*: initial;
+  --font-inter: Inter, sans-serif;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-stroke: #eeeeee;
+  --color-strokedark: #2d2f40;
+  --color-hoverdark: #252a42;
+  --color-titlebg: #adfff8;
+  --color-titlebg2: #ffeac2;
+  --color-titlebgdark: #46495a;
+  --color-btndark: #292e45;
+  --color-white: #ffffff;
+  --color-black: #181c31;
+  --color-blackho: #2c3149;
+  --color-blacksection: #1c2136;
+  --color-primary: #006bff;
+  --color-primaryho: #0063ec;
+  --color-meta: #20c5a8;
+  --color-waterloo: #757693;
+  --color-manatee: #999aa1;
+  --color-alabaster: #fbfbfb;
+  --color-zumthor: #edf5ff;
+  --color-socialicon: #d1d8e0;
+
+  --text-metatitle: 12px, 20px;
+  --text-sectiontitle: 14px, 22px;
+  --text-regular: 16px, 26px;
+  --text-metatitle3: 18px, 26px;
+  --text-metatitle2: 20px, 32px;
+  --text-para2: 22px, 35px;
+  --text-itemtitle: 26px, 32px;
+  --text-itemtitle2: 24px, 32px;
+  --text-hero: 44px, 58px;
+  --text-sectiontitle3: 44px, 55px;
+  --text-sectiontitle2: 40px, 52px;
+  --text-sectiontitle4: 34px, 48px;
+
+  --container-c-1390: 86.875rem;
+  --container-c-1315: 82.188rem;
+  --container-c-1280: 80rem;
+  --container-c-1235: 77.188rem;
+  --container-c-1154: 72.125rem;
+  --container-c-1016: 63.5rem;
+
+  --z-index-1: 1;
+  --z-index-999: 999;
+  --z-index-99999: 99999;
+
+  --transition-property-width: width;
+
+  --shadow-solid-l: 0px 10px 120px 0px rgba(45, 74, 170, 0.1);
+  --shadow-solid-2: 0px 2px 10px rgba(122, 135, 167, 0.05);
+  --shadow-solid-3: 0px 6px 90px rgba(8, 14, 40, 0.04);
+  --shadow-solid-4: 0px 6px 90px rgba(8, 14, 40, 0.1);
+  --shadow-solid-5: 0px 8px 24px rgba(45, 74, 170, 0.08);
+  --shadow-solid-6: 0px 8px 24px rgba(10, 16, 35, 0.08);
+  --shadow-solid-7: 0px 30px 50px rgba(45, 74, 170, 0.1);
+  --shadow-solid-8: 0px 12px 120px rgba(45, 74, 170, 0.06);
+  --shadow-solid-9: 0px 12px 30px rgba(45, 74, 170, 0.06);
+  --shadow-solid-10: 0px 8px 30px rgba(45, 74, 170, 0.06);
+  --shadow-solid-11: 0px 6px 20px rgba(45, 74, 170, 0.05);
+  --shadow-solid-12: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-solid-13: 0px 2px 19px rgba(0, 0, 0, 0.05);
+
+  --animate-line1: line 3s linear infinite;
+  --animate-line2: line 6s linear infinite;
+  --animate-line3: line 9s linear infinite;
+
+  @keyframes line {
+    0%,
+    100% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
 }
-.testimonial-01 .swiper-pagination-bullet-active {
-  @apply w-5 rounded-full bg-primary;
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-.testimonial-01 .swiper-pagination {
-  @apply relative pt-[50px];
+@utility dropdown {
+  @apply -left-7.5 mt-2 hidden min-w-max flex-col gap-4 rounded-md border border-stroke bg-white px-8 py-5 shadow-solid-13 duration-300 ease-in dark:border-strokedark dark:bg-black xl:invisible xl:absolute
+    xl:mt-0 xl:flex xl:w-[250px] xl:translate-y-10 xl:opacity-0
+    xl:before:absolute xl:before:-top-1.5 xl:before:left-10 xl:before:h-3 xl:before:w-3 xl:before:rotate-45 xl:before:border-l xl:before:border-t xl:before:border-stroke xl:before:bg-white xl:group-hover:visible xl:group-hover:translate-y-6.5 
+    xl:group-hover:opacity-100 xl:dark:before:border-strokedark xl:dark:before:bg-black;
 }
 
-#supportCheckbox:checked ~ div span {
-  @apply opacity-100;
+@utility no-scrollbar {
+  /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility img-white {
+  filter: invert(0%) sepia(96%) saturate(15%) hue-rotate(249deg)
+    brightness(100%) contrast(105%);
+}
+
+@layer utilities {
+  /* third-party libraries CSS */
+
+  .testimonial-01 .swiper-pagination-bullet {
+    @apply h-2.5 w-2.5 bg-stroke opacity-100;
+  }
+  .testimonial-01 .swiper-pagination-bullet-active {
+    @apply w-5 rounded-full bg-primary;
+  }
+
+  .testimonial-01 .swiper-pagination {
+    @apply relative pt-[50px];
+  }
+
+  #supportCheckbox:checked ~ div span {
+    @apply opacity-100;
+  }
 }
 
 @layer base {
@@ -25,35 +147,11 @@
   }
 }
 
-@layer components {
-  .dropdown {
-    @apply -left-7.5 mt-2 hidden min-w-max flex-col gap-4 rounded-md border border-stroke bg-white px-8 py-5 shadow-solid-13 duration-300 ease-in dark:border-strokedark dark:bg-black xl:invisible xl:absolute
-    xl:mt-0 xl:flex xl:w-[250px] xl:translate-y-10 xl:opacity-0
-    xl:before:absolute xl:before:-top-1.5 xl:before:left-10 xl:before:h-3 xl:before:w-3 xl:before:rotate-45 xl:before:border-l xl:before:border-t xl:before:border-stroke xl:before:bg-white xl:group-hover:visible xl:group-hover:translate-y-6.5 
-    xl:group-hover:opacity-100 xl:dark:before:border-strokedark xl:dark:before:bg-black;
-  }
-}
-
-@media (max-width: 1280px) {
-  .navbar {
-    @apply max-h-[400px] overflow-y-scroll;
-  }
-}
-
 @layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .img-white {
-    filter: invert(0%) sepia(96%) saturate(15%) hue-rotate(249deg)
-      brightness(100%) contrast(105%);
+  @media (max-width: 1280px) {
+    .navbar {
+      @apply max-h-[400px] overflow-y-scroll;
+    }
   }
 }
 
@@ -70,25 +168,25 @@
 }
 .blog-details h3 strong,
 .blog-details h3 {
-  @apply mb-10 text-xl !font-semibold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
+  @apply mb-10 text-xl font-semibold! leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
 }
 
 .blog-details h4 strong,
 .blog-details h4 {
-  @apply text-xl !font-semibold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
+  @apply text-xl font-semibold! leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight;
 }
 
 .blog-details h5 strong,
 .blog-details h5 {
-  @apply mb-3 text-lg !font-semibold leading-tight text-black dark:text-white sm:text-xl;
+  @apply mb-3 text-lg font-semibold! leading-tight text-black dark:text-white sm:text-xl;
 }
 
 .blog-details h1 {
-  @apply mb-4 text-3xl !font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] lg:text-4xl xl:text-[45px];
+  @apply mb-4 text-3xl font-bold! leading-tight! text-black dark:text-white sm:text-4xl md:text-[45px] lg:text-4xl xl:text-[45px];
 }
 .blog-details h2 strong,
 .blog-details h2 {
-  @apply mb-4 text-[26px] !font-bold !leading-tight text-black dark:text-white sm:text-3xl md:text-4xl;
+  @apply mb-4 text-[26px] font-bold! leading-tight! text-black dark:text-white sm:text-3xl md:text-4xl;
 }
 
 .blog-details ul,
@@ -102,7 +200,7 @@
 }
 
 .blog-details blockquote {
-  @apply relative z-10 mb-10 overflow-hidden rounded-sm bg-manatee p-8 text-center text-base font-medium italic text-black dark:bg-titlebgdark md:py-9 lg:px-10;
+  @apply relative z-10 mb-10 overflow-hidden rounded-xs bg-manatee p-8 text-center text-base font-medium italic text-black dark:bg-titlebgdark md:py-9 lg:px-10;
 }
 
 .blog-details blockquote::after {
@@ -119,7 +217,7 @@ pre {
   @apply relative mb-2 rounded-lg bg-strokedark px-4 py-2;
 }
 .prism-copy-button {
-  @apply absolute right-2 top-2 h-[26px] rounded bg-white px-4 text-primary;
+  @apply absolute right-2 top-2 h-[26px] rounded-sm bg-white px-4 text-primary;
 }
 
 .active-tab {
