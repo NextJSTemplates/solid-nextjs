@@ -81,6 +81,10 @@ If you like the template, please star this repository to inspire the team to cre
 ### ✨ Browse and Download - Best Free [Next.js Templates](https://nextjstemplates.com/templates)
 
 ### Update Log
+
+**10 April 2025**
+- Update eslint to v9.24.0 to resolve peer deps warning during installation.
+
 **29 Jan 2025**
 - Upgraded to Next.js 15
 - Update framer-motion to v12.0.6 for React 19 support.
