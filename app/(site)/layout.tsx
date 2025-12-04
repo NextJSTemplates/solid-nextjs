@@ -1,15 +1,17 @@
-"use client";
-
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Lines from "@/components/Lines";
-import ScrollToTop from "@/components/ScrollToTop";
-import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "../globals.css";
+import type { Metadata } from "next";
+import Proivder from "./Provider";
+
 const inter = Inter({ subsets: ["latin"] });
 
-import ToasterContext from "../context/ToastContext";
+export const metadata: Metadata = {
+  title: "Solid | Next.js Template for Startup and SaaS",
+  description: "Built with Next.js and TypeScript",
+  icons: {
+    icon: "/images/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -19,18 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`dark:bg-black ${inter.className}`}>
-        <ThemeProvider
-          enableSystem={false}
-          attribute="class"
-          defaultTheme="light"
-        >
-          <Lines />
-          <Header />
-          <ToasterContext />
-          {children}
-          <Footer />
-          <ScrollToTop />
-        </ThemeProvider>
+        <Proivder>{children}</Proivder>
       </body>
     </html>
   );
