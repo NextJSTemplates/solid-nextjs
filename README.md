@@ -23,7 +23,7 @@ This Next.js template's homepage comes with an awesome hero area, logos of assoc
 - Functional External Pages
 - Free Lifetime Future Updates
 
-___
+---
 
 #### [Solid FREE](https://solid-free.nextjstemplates.com/)
 
@@ -34,7 +34,7 @@ ___
 - Community Support
 - Free Lifetime Future Updates
 
-___
+---
 
 ### [📦 Download](https://nextjstemplates.com/templates/solid)
 
@@ -66,7 +66,7 @@ You can start the project on the local server
 
 ```bash
     npm run dev
- ```
+```
 
 It’ll start the template on [localhost:3000](http://localhost:3000).
 
@@ -87,6 +87,11 @@ If you like the template, please star this repository to inspire the team to cre
 ### ✨ Browse and Download - Best Free [Next.js Templates](https://nextjstemplates.com/templates)
 
 ### Update Log
+
+**18 November 2026**
+
+- Upgrade dependencies.
+- Fixed some code and config changes needed for the new versions.
 
 **04 December 2025**
 
